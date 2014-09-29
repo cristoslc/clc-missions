@@ -1,0 +1,644 @@
+<mission_data version="1.66" background_id_arme="">
+  <start name_arme="Start">
+    <!--Create the universe-->
+    <create type="player" x="2001.0" y="0.0" z="95000.0" angle="270" name="Enterprise" />
+    <set_object_property property="energy" value="1400" name="Enterprise" />
+    <!--Farpoint-->
+    <create type="genericMesh" x="90000.0" y="-1200.0" z="25000.0" name=" " meshFileName="dat/asteroid.dxs" textureFileName="dat\roundB_specular.png" colorRed="0.804" colorGreen="0.439" colorBlue="0.196" />
+    <set_object_property property="artScale" value="2.5" name=" " />
+    <set_object_property property="pushRadius" value="0" name=" " />
+    <set_object_property property="pitchDelta" value="0.05" name=" " />
+    <set_object_property property="rollDelta" value="0.05" name=" " />
+    <set_object_property property="angleDelta" value="0.05" name=" " />
+    <create type="station" x="90000.0" y="0.0" z="25000.0" name="FarPoint Station" raceKeys="friendly" hullKeys="Base" />
+    <!--<set_object_property property="roll" value="100.0" name="FarPoint Station" />-->
+    <set_object_property property="canBuild" value="0" name="FarPoint Station" />
+    <set_object_property property="missileStoresNuke" value="0" name="FarPoint Station" />
+    <set_object_property property="missileStoresHoming" value="0" name="FarPoint Station" />
+    <set_object_property property="missileStoresECM" value="0" name="FarPoint Station" />
+    <set_object_property property="missileStoresMine" value="0" name="FarPoint Station" />
+    <set_object_property property="canBuild" value="0" name="FarPoint Station" />
+    <set_variable name="FarPointExists" value="0.0" />
+    <!-- DS9  -->
+    <create type="station" x="2000.0" y="0.0" z="95000.0" angle="0" name="Deep Space 9" raceKeys="UFP friendly" hullKeys="Base" />
+    <set_object_property property="canBuild" value="1" name="Deep Space 9" />
+    <set_object_property property="missileStoresNuke" value="0" name="Deep Space 9" />
+    <set_object_property property="missileStoresHoming" value="20" name="Deep Space 9" />
+    <set_object_property property="missileStoresECM" value="6" name="Deep Space 9" />
+    <set_object_property property="missileStoresMine" value="8" name="Deep Space 9" />
+    <!--Enemy Scouts-->
+    <create type="enemy" x="60000.0" y="0.0" z="80000.0" angle="0.0" name="FerengiScout1" raceKeys="Ferengi enemy" hullKeys="Cruiser small Light" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" value1="20000" value2="0" name="FerengiScout1" />
+    <create type="enemy" x="45000.0" y="0.0" z="8000.0" angle="0.0" name="FerengiScout2" raceKeys="Ferengi enemy" hullKeys="Light Cruiser small" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" value1="20000" value2="0" name="FerengiScout2" />
+    <create type="enemy" x="20000.0" y="0.0" z="20000.0" angle="0.0" name="FerengiScout3" raceKeys="Ferengi enemy" hullKeys="Light Cruiser small" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" value1="20000" value2="0" name="FerengiScout3" />
+    <!--EnvoyDelay-->
+    <set_variable name="FarPointEnvoyDeployed" value="0.0" />
+    <set_timer name="EnvoyDelay" seconds="180" />
+    <set_variable name="EnvoyDelayed" value="0.0" />
+    <!-- Environment  -->
+    <set_object_property property="energy" value="1000" name="Enterprise" />
+    <set_object_property property="countECM" value="4" name="Enterprise" />
+    <create count="800" type="asteroids" startAngle="250" endAngle="290" startX="-60000.0" startY="0.0" startZ="50000.0" radius="100000" randomRange="20000" randomSeed="2" />
+    <set_object_property property="countMine" value="6" name="Enterprise" />
+    <create count="100" type="nebulas" startAngle="250" endAngle="290" startX="-50000.0" startY="0.0" startZ="50000.0" radius="100000" randomRange="20000" randomSeed="2" />
+    <set_object_property property="countNuke" value="2" name="Enterprise" />
+    <set_object_property property="countHoming" value="8" name="Enterprise" />
+    <create type="anomaly" x="98000.0" y="0.0" z="80000.0" name="anomaly 68" />
+    <create type="anomaly" x="20000.0" y="0.0" z="94000.0" name="anomaly 42" />
+    <create type="anomaly" x="55500.0" y="0.0" z="55500.0" name="anomaly 77" />
+    <create type="anomaly" x="91500.0" y="0.0" z="86000.0" name="anomaly 31" />
+    <create type="anomaly" x="66500.0" y="0.0" z="66000.0" name="anomaly 34" />
+    <create type="anomaly" x="66000.0" y="0.0" z="56000.0" name="anomaly 32" />
+    <create type="anomaly" x="86500.0" y="0.0" z="76000.0" name="anomaly 30" />
+    <create type="anomaly" x="66500.0" y="0.0" z="66000.0" name="anomaly 01" />
+    <create type="anomaly" x="37940.0" y="0.0" z="45000.0" name="anomaly 01" />
+    <create type="anomaly" x="43560.0" y="0.0" z="64500.0" name="anomaly 06" />
+    <create type="anomaly" x="32380.0" y="0.0" z="78800.0" name="anomaly 05" />
+    <!--Black Holes-->
+    <create type="blackHole" x="75000.0" y="0.0" z="50000.0" />
+    <create type="blackHole" x="10000.0" y="0.0" z="60000.0" />
+    <!--Whale-->
+    <create type="whale" x="100000.0" y="0.0" z="50000.0" angle="270.0" name="WhalePod" podnumber="1" />
+    <set_object_property property="topSpeed" value="0.25" name="WhalePod" />
+    <set_object_property property="exitPointZ" value="50000.0" name="WhalePod" />
+    <set_object_property property="exitPointX" value="75000.0" name="WhalePod" />
+    <add_ai type="PROCEED_TO_EXIT" name="WhalePod" />
+    <!--Opening-->
+    <set_difficulty_level value="3" />
+    <set_skybox_index index="9" />
+    <big_message title="Encounter at FarPoint" subtitle1="by Travis Head" subtitle2="adventure for Artemis 1.66" />
+    <set_timer name="CreditsP1" seconds="10" />
+    <set_timer name="DS9Opening1" seconds="10" />
+    <set_timer name="SFCommandOrders1" seconds="15" />
+  </start>
+  <folder_arme name_arme="Openign Credits" id_arme="86c41aad-1610-4ab9-acf2-a56522978a3e" expanded_arme="" />
+  <event name_arme="Credits" id_arme="e722fa34-5c42-4cac-882a-7fe99c42ddd1" parent_id_arme="86c41aad-1610-4ab9-acf2-a56522978a3e">
+    <if_timer_finished name="CreditsP1" />
+    <if_variable name="CreditsP2" comparator="EQUALS" value="0.0" />
+    <big_message title="Inspired by Star Trek TNG" subtitle1="Season 1, Episode1" subtitle2="Encounter at FarPoint" />
+    <set_variable name="CreditsP2" value="1.0" />
+  </event>
+  <folder_arme name_arme="Openign Briefings" id_arme="4b7c7562-7593-481c-9188-65bbfcb6e1c2" expanded_arme="" />
+  <event name_arme="DS9" id_arme="a85ce416-30ce-4eaf-aad6-23ef1ce047ea" parent_id_arme="4b7c7562-7593-481c-9188-65bbfcb6e1c2">
+    <if_timer_finished name="DS9Opening1" />
+    <if_variable name="DS9FirstMessage" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="Deep Space 9">The envoy is onboard, you're all fueled up and ready to go, Enterprise. Captain Sisko sends his regards.</incoming_comms_text>
+    <set_variable name="DS9FirstMessage" value="1.0" />
+  </event>
+  <event name_arme="Starfleet Command" id_arme="a7219d75-96fb-4685-ad9c-b59e46817b06" parent_id_arme="4b7c7562-7593-481c-9188-65bbfcb6e1c2">
+    <if_timer_finished name="SFCommandOrders1" />
+    <if_variable name="SFCommandOpening" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Orders Received" consoles="MHWESCO" />
+    <incoming_comms_text from="Starfleet Command">Enterprise, your mission is to make contact with the remote FarPoint Station on the planet Deneb IV. They have requested admittance into the Federation and you are to deliver our Diplomatic Envoy. Until recently they were a relative backwater. We want you to investigate and see if you can't get to the bottom of their recent technological development.  </incoming_comms_text>
+    <set_variable name="SFCommandOpening" value="1.0" />
+  </event>
+  <folder_arme name_arme="Events" id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44" expanded_arme="" />
+  <event name_arme="First Contact w FarPoint" id_arme="57b8616a-b2ea-42d9-888e-1d148f12feaf" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_variable name="FirstContact" comparator="EQUALS" value="0.0" />
+    <if_distance name1="FarPoint Station" name2="Enterprise" comparator="LESS_EQUAL" value="20000.0" />
+    <if_exists name="FarPoint Station" />
+    <warning_popup_message message="Incoming Transmission" consoles="MCO" />
+    <incoming_comms_text from="FarPoint Station">Enterprise.Until the next supply ship arrives we have no weapons, but we are happy to provide you with all the energy you need when you arrive.</incoming_comms_text>
+    <set_variable name="FirstContact" value="1.0" />
+  </event>
+  <event name_arme="Troi Concerned" id_arme="2c92a200-8bd1-4afe-9ff3-f75bb226f821" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_variable name="TroiConcerned" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="TroiConcern" />
+    <set_variable name="TroiConcerned" value="1.0" />
+    <incoming_comms_text from="Counselor Troi">Captain, I am sensing a deep sadness from the station.  No one person in particular but a very strong sense of loneliness.^</incoming_comms_text>
+  </event>
+  <event name_arme="EnvoyDelay" id_arme="0bb12810-c2dc-438c-83d7-407c7c428806" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_variable name="FarPointEnvoyDeployed" comparator="EQUALS" value="0.0" />
+    <if_variable name="EnvoyDelayed" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="EnvoyDelay" />
+    <set_variable name="EnvoyDelayed" value="1.0" />
+    <incoming_comms_text from="Starfleet Command">What's the hold up on that envoy?^You have your orders Enterprise.</incoming_comms_text>
+  </event>
+  <event name_arme="Enterprise Docks with FarPoint" id_arme="cfa5eb9a-cd9d-414a-8b5e-0653ea721795" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_docked name="FarPoint Station" />
+    <if_variable name="FarPointFirstDock" comparator="EQUALS" value="0.0" />
+    <set_timer name="EnvoyDeployed" seconds="20" />
+    <incoming_comms_text from="FarPoint Station">Welcome to FarPoint Station.  Please allow us a moment to transport your envoy.</incoming_comms_text>
+    <set_variable name="FarPointFirstDock" value="1.0" />
+  </event>
+  <event name_arme="Envoy Deployed" id_arme="c04f707a-190e-46a3-916e-c7b4e710b710" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_variable name="FarPointEnvoyDeployed" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="EnvoyDeployed" />
+    <set_variable name="FarPointEnvoyDeployed" value="1.0" />
+    <incoming_comms_text from="FarPoint Station">Envoy received, Enterprise. You are clear to leave orbit.</incoming_comms_text>
+    <set_timer name="CreateFerengi2" seconds="180" />
+    <set_timer name="EnvoyRdytoReturn" seconds="200" />
+  </event>
+  <event name_arme="Envoy Done" id_arme="3443f52d-c0ef-48f9-aed5-ba604d32e93e" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_timer_finished name="EnvoyRdytoReturn" />
+    <if_variable name="FarPointEnvoyDeployed" comparator="EQUALS" value="1.0" />
+    <set_variable name="FarPointEnvoyDeployed" value="2.0" />
+    <incoming_comms_text from="FarPoint Station">The Diplomatic Envoy is ready to return to the Enterprise and consider FarPoints offer.^</incoming_comms_text>
+  </event>
+  <event name_arme="Envoy Returned" id_arme="3276655a-d052-4ff6-a203-c92a84a24395" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_variable name="FarPointEnvoyDeployed" comparator="EQUALS" value="2.0" />
+    <if_docked name="FarPoint Station" />
+    <set_variable name="FarPointEnvoyDeployed" value="3.0" />
+    <incoming_comms_text from="Transporter Room">Bridge, we have the Diplomats back on board.^</incoming_comms_text>
+  </event>
+  <event name_arme="Ferengi2Deployed" id_arme="ccaee0c5-be07-4726-9f80-985302ebe6c9" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_timer_finished name="CreateFerengi2" />
+    <if_variable name="FarPointFirstDock" comparator="EQUALS" value="1.0" />
+    <if_variable name="CreateFerengi2" comparator="EQUALS" value="0.0" />
+    <set_variable name="CreateFerengi2" value="1.0" />
+    <set_variable name="Ferengi2Exists" value="0.0" />
+    <create type="enemy" x="100000.0" y="0.0" z="80000.0" angle="0" name="Ferengi1" raceKeys="Ferengi enemy" hullKeys="Marauder medium" fleetnumber="2" />
+    <add_ai type="CHASE_PLAYER" name="Ferengi1" />
+    <create type="enemy" x="99000.0" y="0.0" z="80000.0" angle="0" name="Ferengi2" raceKeys="Ferengi enemy" hullKeys="Marauder small" fleetnumber="2" />
+    <add_ai type="CHASE_PLAYER" name="Ferengi2" />
+    <create type="enemy" x="99000.0" y="0.0" z="79500.0" angle="0.0" name="Ferengi6" raceKeys="Ferengi enemy" hullKeys="Marauder small" fleetnumber="2" />
+    <add_ai type="CHASE_PLAYER" name="Ferengi6" />
+    <create type="enemy" x="99000.0" y="0.0" z="79000.0" angle="0.0" name="Ferengi9" raceKeys="Ferengi enemy" hullKeys="Cruiser small" fleetnumber="2" />
+    <add_ai type="CHASE_PLAYER" name="Ferengi9" />
+    <create type="enemy" x="98000.0" y="0.0" z="79000.0" angle="0.0" name="Ferengi10" raceKeys="Ferengi enemy" hullKeys="Cruiser small" fleetnumber="2" />
+    <add_ai type="CHASE_PLAYER" name="Ferengi10" />
+    <incoming_comms_text from="FarPoint Station">Enterprise, a Ferengi Fleet has entered a nearby sector and they are headed this way. I assume we are under your protection?</incoming_comms_text>
+    <set_variable name="TroiConcerned" value="0.0" />
+    <set_timer name="TroiConcern" seconds="20" />
+  </event>
+  <event name_arme="IfFerengi2Destroyed" id_arme="f677fc54-eabe-479d-9163-5fbabee8ee7c" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_variable name="CreateFerengi2" comparator="EQUALS" value="1.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="2" />
+    <if_variable name="Ferengi2Exists" comparator="EQUALS" value="0.0" />
+    <set_variable name="Ferengi2Exists" value="1.0" />
+    <set_variable name="FarPointMayday1" value="0.0" />
+    <set_variable name="Entity1Appear" value="0.0" />
+    <set_timer name="Entity1Appear" seconds="90" />
+  </event>
+  <event name_arme="Entity1CreateDocile" id_arme="5f4def1e-a73b-42c7-9318-606a4a97efe6" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_variable name="Entity1Appear" comparator="EQUALS" value="0.0" />
+    <if_variable name="FarPointMayday1" comparator="EQUALS" value="0.0" />
+    <if_variable name="Ferengi2Exists" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Entity1Appear" />
+    <create type="monster" x="100000.0" y="0.0" z="0.0" angle="180.0" name="UnknownEntity1" />
+    <warning_popup_message message="Incoming Distress Call" consoles="MHWESCO" />
+    <incoming_comms_text from="FarPoint Station">Enterprise! Some .... some CREATURE has appeared from deep space.  ^It's obviously hostile, you must destroy it!</incoming_comms_text>
+    <set_timer name="Entity1Docile" seconds="30" />
+    <set_variable name="Entity1Docile" value="0.0" />
+    <set_variable name="FarPointNukes" value="0.0" />
+    <set_variable name="Entity1Appear" value="1.0" />
+    <set_variable name="FarPointMayday1" value="1.0" />
+  </event>
+  <event name_arme="Entity1Mobile" id_arme="dd021bc6-26bb-400b-a4c2-953fbfc454ac" parent_id_arme="f8a6b3fb-f0d6-45d6-9ac8-de76c98e3b44">
+    <if_timer_finished name="Entity1Docile" />
+    <if_variable name="Entity1Docile" comparator="EQUALS" value="0.0" />
+    <if_variable name="FarPointNukes" comparator="EQUALS" value="0.0" />
+    <set_object_property property="missileStoresHoming" value="6" name="FarPoint Station" />
+    <set_object_property property="missileStoresNuke" value="2" name="FarPoint Station" />
+    <set_object_property property="missileStoresMine" value="4" name="FarPoint Station" />
+    <set_object_property property="missileStoresECM" value="2" name="FarPoint Station" />
+    <incoming_comms_text from="FarPoint Station">Enterprise, we may have been holding out on you before. Re-dock and we will supply you with some weapons just PLEASE keep that ...THING away from us! You must protect us!</incoming_comms_text>
+    <set_variable name="FarPointNukes" value="1.0" />
+    <set_variable name="Entity1Docile" value="1.0" />
+    <set_variable name="Entity1HostiletoFarPoint" value="0.0" />
+    <set_timer name="Entity1Mobile" seconds="10" />
+  </event>
+  <folder_arme name_arme="Scout Spawn" id_arme="e9699d10-71c1-4e93-bc69-862196b52901" expanded_arme="" />
+  <event name_arme="Scout01" id_arme="60d65a5c-2aba-4b91-ad04-49ba219551b7" parent_id_arme="e9699d10-71c1-4e93-bc69-862196b52901">
+    <if_distance name1="Enterprise" name2="anomaly 42" comparator="LESS" value="2000.0" />
+    <if_variable name="SpawnScout42" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="20000.0" y="0.0" z="91500.0" angle="180.0" name="FerengiScout01" raceKeys="Ferengi enemy" hullKeys="Light Cruiser small" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" value1="20000" value2="0" name="FerengiScout01" />
+    <set_variable name="SpawnScout42" value="1.0" />
+  </event>
+  <event name_arme="Scout02" id_arme="36d10d49-6ba1-4452-8a00-513e3d1e3d30" parent_id_arme="e9699d10-71c1-4e93-bc69-862196b52901">
+    <if_distance name1="Enterprise" name2="anomaly 77" comparator="LESS" value="2000.0" />
+    <if_variable name="SpawnScout42" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="55000.0" y="0.0" z="55000.0" angle="270.0" name="FerengiScout02" raceKeys="Ferengi enemy" hullKeys="Light Cruiser small" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" value1="20000" value2="0" name="FerengiScout02" />
+    <set_variable name="SpawnScout42" value="1.0" />
+  </event>
+  <event name_arme="Scout03" id_arme="6628abf7-75e1-4fcf-9068-c92a3f2f8c67" parent_id_arme="e9699d10-71c1-4e93-bc69-862196b52901">
+    <if_distance name1="Enterprise" name2="anomaly 34" comparator="LESS" value="2000.0" />
+    <if_variable name="SpawnScout42" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="65600.0" y="0.0" z="66000.0" angle="90.0" name="FerengiScout3" raceKeys="Ferengi enemy" hullKeys="Light Cruiser small" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" value1="20000" value2="0" name="FerengiScout03" />
+    <set_variable name="SpawnScout42" value="1.0" />
+  </event>
+  <event name_arme="Scout04" id_arme="1511afba-2b41-42bb-be51-cfc1e984b4bf" parent_id_arme="e9699d10-71c1-4e93-bc69-862196b52901">
+    <if_distance name1="Enterprise" name2="anomaly 32" comparator="LESS" value="2000.0" />
+    <if_variable name="SpawnScout42" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="65600.0" y="0.0" z="56500.0" angle="180.0" name="FerengiScout04" raceKeys="Ferengi enemy" hullKeys="Light Cruiser small" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" value1="20000" value2="0" name="FerengiScout04" />
+    <set_variable name="SpawnScout42" value="1.0" />
+  </event>
+  <event name_arme="Scout05" id_arme="bd2aa822-32cf-4947-a207-7722f717f1e5" parent_id_arme="e9699d10-71c1-4e93-bc69-862196b52901">
+    <if_distance name1="Enterprise" name2="anomaly 30" comparator="LESS" value="2000.0" />
+    <if_variable name="SpawnScout42" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="86000.0" y="0.0" z="75000.0" angle="32.0" name="FerengiScout05" raceKeys="Ferengi enemy" hullKeys="Light Cruiser small" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" value1="20000" value2="0" name="FerengiScout05" />
+    <set_variable name="SpawnScout42" value="1.0" />
+  </event>
+  <folder_arme name_arme="Monster Moves In" id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c" expanded_arme="" />
+  <event name_arme="Move1" id_arme="4f2c3714-4f21-41dc-b517-28d6347fe17e" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Entity1HostiletoFarPoint" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="Entity1Mobile" />
+    <set_object_property property="positionX" value="99000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="2500.0" name="UnknownEntity1" />
+    <set_variable name="Move1" value="0.0" />
+    <set_timer name="MMove2" seconds="10" />
+    <set_variable name="Entity1HostiletoFarPoint" value="1.0" />
+  </event>
+  <event name_arme="Move2" id_arme="a6d63044-7b9f-40a0-8d1a-c7babb274415" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move1" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove2" />
+    <set_variable name="Move1" value="1.0" />
+    <set_variable name="Move2" value="0.0" />
+    <set_object_property property="positionX" value="98000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="5000.0" name="UnknownEntity1" />
+    <set_timer name="MMove3" seconds="10" />
+  </event>
+  <event name_arme="Move3" id_arme="63bbf354-88d7-4780-8f17-e42b9ece36f5" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move2" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove3" />
+    <set_object_property property="positionX" value="97000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="7500.0" name="UnknownEntity1" />
+    <set_variable name="Move3" value="0.0" />
+    <set_variable name="Move2" value="1.0" />
+    <set_timer name="MMove4" seconds="10" />
+  </event>
+  <event name_arme="Move4" id_arme="20eda730-47f5-4bd3-b39c-c8ac9e8d47ad" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move3" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove4" />
+    <set_variable name="Move3" value="1.0" />
+    <set_variable name="Move4" value="0.0" />
+    <set_object_property property="positionX" value="96000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="10000.0" name="UnknownEntity1" />
+    <set_timer name="MMove5" seconds="10" />
+  </event>
+  <event name_arme="Move5" id_arme="f9532f8f-2259-4079-8802-f2939ba5fc7e" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move4" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove5" />
+    <set_variable name="Move5" value="0.0" />
+    <set_variable name="Move4" value="1.0" />
+    <set_object_property property="positionX" value="95000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="12500.0" name="UnknownEntity1" />
+    <set_timer name="MMove6" seconds="10" />
+  </event>
+  <event name_arme="Move6" id_arme="535ebaa0-88d5-4a03-838d-01a40f35217a" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move5" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove6" />
+    <set_timer name="MMove7" seconds="10" />
+    <set_variable name="Move5" value="1.0" />
+    <set_variable name="Move6" value="0.0" />
+    <set_object_property property="positionX" value="94000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="15000.0" name="UnknownEntity1" />
+  </event>
+  <event name_arme="Move7" id_arme="bcbc8787-3db2-4c6f-a835-3a6c71663040" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move6" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove7" />
+    <set_variable name="Move7" value="0.0" />
+    <set_variable name="Move6" value="1.0" />
+    <set_object_property property="positionX" value="93000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="17500.0" name="UnknownEntity1" />
+    <set_timer name="MMove8" seconds="10" />
+  </event>
+  <event name_arme="Move8" id_arme="8d4f05b3-596e-44c3-b6be-4215f5fbb1bf" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move7" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove8" />
+    <set_variable name="Move7" value="1.0" />
+    <set_variable name="Move8" value="0.0" />
+    <set_object_property property="positionX" value="92000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="20000.0" name="UnknownEntity1" />
+    <set_timer name="MMove9" seconds="10" />
+  </event>
+  <event name_arme="Move9" id_arme="78648e1f-b9fe-4994-8922-9940dc113f3d" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move8" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove9" />
+    <set_variable name="Move8" value="1.0" />
+    <set_variable name="Move9" value="0.0" />
+    <set_object_property property="positionX" value="91500.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="22500.0" name="UnknownEntity1" />
+    <set_timer name="MMove10" seconds="10" />
+  </event>
+  <event name_arme="FinalMove" id_arme="bed323da-47ce-4b3d-aa9f-991f4b775b6b" parent_id_arme="2f3d01b3-e86e-4b37-81f2-bc995b65028c">
+    <if_variable name="Move9" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove10" />
+    <set_variable name="Move9" value="1.0" />
+    <set_variable name="FinalMove" value="0.0" />
+    <set_object_property property="positionX" value="91000.0" name="UnknownEntity1" />
+    <set_object_property property="positionZ" value="24000.0" name="UnknownEntity1" />
+    <add_ai type="ATTACK" targetName="FarPoint Station" value1="5.0" name="UnknownEntity1" />
+    <set_object_property property="shieldState" value="100.0" name="FarPoint Station" />
+  </event>
+  <folder_arme name_arme="FPDestroyed" id_arme="964facb1-f2c0-47e8-92c9-71a38c2ea7d1" expanded_arme="" />
+  <event name_arme="CreateEntity2" id_arme="86ea1c60-0c87-4a2b-b6cc-bd339bc4b7da" parent_id_arme="964facb1-f2c0-47e8-92c9-71a38c2ea7d1">
+    <if_not_exists name="FarPoint Station" />
+    <if_variable name="FarPointExists" comparator="EQUALS" value="0.0" />
+    <set_variable name="FarPointExists" value="1.0" />
+    <create type="monster" x="90100.0" y="0.0" z="24900.0" angle="0.0" name="UnknownEntity2" />
+    <incoming_comms_text from="FarPoint Station">We're ... Sorry."^--Transmission Terminated--</incoming_comms_text>
+    <set_timer name="FPDestroyedDelay" seconds="20" />
+    <set_variable name="TroiHappy" value="0.0" />
+    <set_variable name="EntitiesHostile" value="3.0" />
+  </event>
+  <event name_arme="EntityDisengaged" id_arme="4f2f6481-fc55-4854-843e-bd520b37ac8b" parent_id_arme="964facb1-f2c0-47e8-92c9-71a38c2ea7d1">
+    <if_distance name1="UnknownEntity1" name2="Enterprise" comparator="GREATER_EQUAL" value="2000.1" />
+    <if_timer_finished name="FPDestroyedDelay" />
+    <if_variable name="TroiHappy" comparator="EQUALS" value="0.0" />
+    <if_variable name="EntitiesHostile" comparator="EQUALS" value="3.0" />
+    <set_variable name="TroiHappy" value="1.0" />
+    <set_variable name="EntitiesHostile" value="0.0" />
+    <incoming_comms_text from="Conselor Troi">Captain, the sadness I felt before is gone. Now I am sensing a deep joy and gratitude.</incoming_comms_text>
+    <set_timer name="EntitiesDepart" seconds="15" />
+    <set_variable name="EntitiesDepartStart" value="0.0" />
+  </event>
+  <event name_arme="EntityEngaged" id_arme="44904897-9671-443f-af79-52de8528e4f0" parent_id_arme="964facb1-f2c0-47e8-92c9-71a38c2ea7d1">
+    <if_distance name1="UnknownEntity1" name2="Enterprise" comparator="LESS_EQUAL" value="2000.0" />
+    <if_timer_finished name="FPDestroyedDelay" />
+    <if_variable name="EntitiesHostile" comparator="EQUALS" value="3.0" />
+    <set_variable name="EntitiesHostile" value="1.0" />
+    <set_timer name="Ordered to Destroy Entity Delay" seconds="15" />
+    <set_variable name="Ordered to Destrot Entity" value="0.0" />
+  </event>
+  <folder_arme name_arme="EntityEngaged" id_arme="dac8ecfd-140f-49c2-8e18-d43c996683f3" expanded_arme="" />
+  <event name_arme="EntitiesAttack" id_arme="1a255a70-eb40-48ae-bfa2-463be5c4c46c" parent_id_arme="dac8ecfd-140f-49c2-8e18-d43c996683f3">
+    <if_variable name="EntitiesHostile" comparator="EQUALS" value="1.0" />
+    <add_ai type="CHASE_PLAYER" value1="8000" value2="0" name="UnknownEntity1" />
+    <add_ai type="CHASE_PLAYER" value1="8000" value2="0" name="UnknownEntity2" />
+  </event>
+  <event name_arme="UpdatedOrders" id_arme="c4212864-1880-4f52-8e7b-48d8f9ab6c3c" parent_id_arme="dac8ecfd-140f-49c2-8e18-d43c996683f3">
+    <if_variable name="Ordered to Destrot Entity" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="Ordered to Destroy Entity Delay" />
+    <set_variable name="Ordered to Destrot Entity" value="1.0" />
+    <incoming_comms_text from="StarFleet Command">Enterprise, we cannot let those creatures threaten Deep Space 9.  Take any means necessary to destroy them before they attack the station.^</incoming_comms_text>
+    <warning_popup_message message="Urgent Message from Starfleet" consoles="MHWESCO" />
+    <set_timer name="DS9Hint1Delay" seconds="30" />
+    <set_variable name="DS9Hint1" value="0.0" />
+  </event>
+  <event name_arme="DS9Hint1" id_arme="65158ab9-a47a-4028-b927-b698b911527f" parent_id_arme="dac8ecfd-140f-49c2-8e18-d43c996683f3">
+    <if_variable name="DS9Hint1" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="DS9Hint1Delay" />
+    <incoming_comms_text from="Deep Space 9">Enterprise, we have been monitoring your situation. It appears conventional weapons have no effect on these creatures.^There must be some other way to neutralise the threat.^Our team will continue to investigate.</incoming_comms_text>
+    <set_variable name="DS9Hint1" value="1.0" />
+    <set_timer name="DS9Hint2Delay" seconds="60" />
+  </event>
+  <event name_arme="DS9Hint2" id_arme="e5e7e572-af75-4b42-9311-401d69f38a4e" parent_id_arme="dac8ecfd-140f-49c2-8e18-d43c996683f3">
+    <if_variable name="DS9Hint1" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="DS9Hint2Delay" />
+    <incoming_comms_text from="Deep Space 9">Our Science officer has an idea.  See if you can lure them into a nearby black hole. Exercise extreme caution, Enterprise.</incoming_comms_text>
+    <set_variable name="DS9Hint1" value="2.0" />
+  </event>
+  <event name_arme="Destroyed" id_arme="ff8fe9a3-9525-4c69-beb7-0c5cb3d9d114" parent_id_arme="dac8ecfd-140f-49c2-8e18-d43c996683f3">
+    <if_variable name="EntitiesHostile" comparator="EQUALS" value="1.0" />
+    <if_not_exists name="UnknownEntity1" />
+    <if_not_exists name="UnknownEntity2" />
+    <set_variable name="EntitiesHostile" value="3.0" />
+    <set_timer name="Victory Hostile" seconds="15" />
+    <!--this will trigger Victory - Hostile-->
+  </event>
+  <folder_arme name_arme="EntityDisengaged" id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37" expanded_arme="" />
+  <event name_arme="Move1" id_arme="212aaf01-92e9-4d33-b782-ba8cc7a4f76e" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="EntitiesHostile" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="EntitiesDepart" />
+    <if_variable name="EntitiesDepartStart" comparator="EQUALS" value="0.0" />
+    <set_object_property property="positionX" value="91500.0" name="UnknownEntity1" />
+    <set_object_property property="positionX" value="91400.0" name="UnknownEntity2" />
+    <set_object_property property="positionZ" value="22500.0" name="UnknownEntity1" />
+    <set_variable name="Move100" value="0.0" />
+    <set_timer name="MMove200" seconds="3" />
+    <set_variable name="EntitiesDepartStart" value="1.0" />
+  </event>
+  <event name_arme="Move2" id_arme="f71bcb30-2b92-487e-a3cc-c3d99c1afbb0" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move100" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove200" />
+    <set_variable name="Move100" value="1.0" />
+    <set_variable name="Move200" value="0.0" />
+    <set_object_property property="positionX" value="92000.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="92000.0" name="UnknownEntity1" />
+    <set_timer name="MMove300" seconds="3" />
+  </event>
+  <event name_arme="Move3" id_arme="7fac8bba-ca15-4f8e-9249-69a20f3cf5a5" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move200" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove300" />
+    <set_object_property property="positionX" value="93000.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="93000.0" name="UnknownEntity1" />
+    <set_variable name="Move300" value="0.0" />
+    <set_variable name="Move200" value="1.0" />
+    <set_timer name="MMove400" seconds="3" />
+  </event>
+  <event name_arme="Move4" id_arme="b81bff7a-f009-4d23-a443-7746ea194320" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move300" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove400" />
+    <set_variable name="Move300" value="1.0" />
+    <set_variable name="Move400" value="0.0" />
+    <set_object_property property="positionX" value="94000.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="94000.0" name="UnknownEntity1" />
+    <set_timer name="MMove500" seconds="3" />
+  </event>
+  <event name_arme="Move5" id_arme="53ae078a-8fd7-4039-85d1-196e194022c5" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move400" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove500" />
+    <set_variable name="Move500" value="0.0" />
+    <set_variable name="Move400" value="1.0" />
+    <set_object_property property="positionX" value="95000.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="95000.0" name="UnknownEntity1" />
+    <set_timer name="MMove600" seconds="3" />
+  </event>
+  <event name_arme="Move6" id_arme="c11778d6-f229-435d-aac4-11597a0e89bb" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move500" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove600" />
+    <set_timer name="MMove700" seconds="3" />
+    <set_variable name="Move500" value="1.0" />
+    <set_variable name="Move600" value="0.0" />
+    <set_object_property property="positionX" value="96000.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="96000.0" name="UnknownEntity1" />
+  </event>
+  <event name_arme="Move7" id_arme="726c902c-4e25-4f8a-9351-0e9255eace20" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move600" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove700" />
+    <set_variable name="Move700" value="0.0" />
+    <set_variable name="Move600" value="1.0" />
+    <set_object_property property="positionX" value="97000.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="97000.0" name="UnknownEntity1" />
+    <set_timer name="MMove800" seconds="3" />
+  </event>
+  <event name_arme="Move8" id_arme="0d3a0faf-f25b-4a45-9d24-e9f489d595aa" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move700" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove800" />
+    <set_variable name="Move700" value="1.0" />
+    <set_variable name="Move800" value="0.0" />
+    <set_object_property property="positionX" value="98000.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="98000.0" name="UnknownEntity1" />
+    <set_timer name="MMove900" seconds="3" />
+  </event>
+  <event name_arme="Move9" id_arme="01a23db7-56f5-4047-9ce9-4f6066211aae" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move800" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove900" />
+    <set_variable name="Move800" value="1.0" />
+    <set_variable name="Move900" value="0.0" />
+    <set_object_property property="positionX" value="99000.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="99000.0" name="UnknownEntity1" />
+    <set_timer name="MMove1000" seconds="3" />
+  </event>
+  <event name_arme="FinalMove" id_arme="88d96734-5a19-4639-ae87-2445553c7b46" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="Move900" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="MMove1000" />
+    <set_variable name="Move900" value="1.0" />
+    <set_variable name="EntitiesDepart" value="0.0" />
+    <set_object_property property="positionX" value="99500.0" name="UnknownEntity2" />
+    <set_object_property property="positionX" value="99500.0" name="UnknownEntity1" />
+    <set_timer name="EntitiesDepart2" seconds="3" />
+  </event>
+  <event name_arme="EntitiesDepart" id_arme="3d7873a1-7cbf-4701-86a6-e3316da5a604" parent_id_arme="b339c7b3-4100-4bf2-af42-554e2b10df37">
+    <if_variable name="EntitiesDepart" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="EntitiesDepart2" />
+    <set_variable name="EntitiesDepart" value="1.0" />
+    <destroy name="UnknownEntity1" />
+    <destroy name="UnknownEntity2" />
+    <set_variable name="Victory - Friendly" value="0.0" />
+    <set_timer name="VictoryFriendly" seconds="15" />
+    <!--this will trigger victory - friendly-->
+  </event>
+  <folder_arme name_arme="Victories" id_arme="cb2f9e8f-453f-4cc2-b2eb-0ddc02f22238" expanded_arme="" />
+  <folder_arme name_arme="Hostile w Envoy" id_arme="96f4a43e-e2ec-4c28-8b3e-f24014f278be" parent_id_arme="cb2f9e8f-453f-4cc2-b2eb-0ddc02f22238" expanded_arme="" />
+  <event id_arme="2b4a84d8-cfab-454e-95aa-c00215c71baa" parent_id_arme="96f4a43e-e2ec-4c28-8b3e-f24014f278be">
+    <if_variable name="EntitiesHostile" comparator="EQUALS" value="3.0" />
+    <if_variable name="FarPointEnvoyDeployed" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Victory Hostile" />
+    <set_variable name="Victiry Test" value="1.0" />
+    <set_variable name="EntitiesHostile" value="4.0" />
+    <warning_popup_message message="Victory!" consoles="MHWESCO" />
+    <big_message title="Mission Accomplished" subtitle1="You successfully unlocked" subtitle2="the secrets of FarPoint Station," />
+    <set_timer name="Hostile w Envoy 1" seconds="8" />
+    <set_variable name="Hostile w Envoy1" value="0.0" />
+  </event>
+  <event id_arme="dcfd70f9-6844-4cc5-bc82-2f15396cef25" parent_id_arme="96f4a43e-e2ec-4c28-8b3e-f24014f278be">
+    <if_timer_finished name="Hostile w Envoy 1" />
+    <if_variable name="Hostile w Envoy1" comparator="EQUALS" value="0.0" />
+    <big_message subtitle1="recovered your envoy " subtitle2="and prevented the creatures" />
+    <set_timer name="Hostile w Envoy 2" seconds="8" />
+    <set_variable name="Hostile w Envoy1" value="1.0" />
+  </event>
+  <event id_arme="7ec02b7f-cba7-4e1b-838b-ee861a956951" parent_id_arme="96f4a43e-e2ec-4c28-8b3e-f24014f278be">
+    <if_timer_finished name="Hostile w Envoy 2" />
+    <if_variable name="Hostile w Envoy1" comparator="EQUALS" value="1.0" />
+    <set_variable name="Hostile w Envoy1" value="2.0" />
+    <set_timer name="Hostile w Envoy 3" seconds="8" />
+    <big_message subtitle1="from attacking the Federation." subtitle2="Congratulations!" />
+  </event>
+  <event id_arme="ae8330f0-0efe-4718-8b08-080e61df1cab" parent_id_arme="96f4a43e-e2ec-4c28-8b3e-f24014f278be">
+    <if_timer_finished name="Hostile w Envoy 3" />
+    <if_variable name="Hostile w Envoy1" comparator="EQUALS" value="2.0" />
+    <big_message subtitle1="It is unfortunate the creatures had to die" subtitle2="but you did what you had to do." />
+    <set_variable name="Hostile w Envoy1" value="3.0" />
+    <set_timer name="EndMission" seconds="15" />
+  </event>
+  <folder_arme name_arme="Hostile w/o Envoy" id_arme="8b246b20-dd56-4aec-a2e3-3ebb17250f92" parent_id_arme="cb2f9e8f-453f-4cc2-b2eb-0ddc02f22238" expanded_arme="" />
+  <event id_arme="e94892ff-e5d2-43f4-8f94-71b4e290ee7c" parent_id_arme="8b246b20-dd56-4aec-a2e3-3ebb17250f92">
+    <if_variable name="EntitiesHostile" comparator="EQUALS" value="3.0" />
+    <if_variable name="FarPointEnvoyDeployed" comparator="LESS" value="3.0" />
+    <if_timer_finished name="Victory Hostile" />
+    <set_variable name="EntitiesHostile" value="4.0" />
+    <set_variable name="Victiry Test" value="1.0" />
+    <warning_popup_message message="Victory!" consoles="MHWESCO" />
+    <big_message title="Mission Accomplished" subtitle1="You successfully unlocked" subtitle2="the secrets of FarPoint Station," />
+    <set_timer name="Hostile wo Envoy 1" seconds="8" />
+    <set_variable name="Hostile wo Envoy1" value="0.0" />
+  </event>
+  <event id_arme="9ba52d21-5ed1-46d9-90c5-a6dd09f3d25c" parent_id_arme="8b246b20-dd56-4aec-a2e3-3ebb17250f92">
+    <if_timer_finished name="Hostile wo Envoy 1" />
+    <if_variable name="Hostile wo Envoy1" comparator="EQUALS" value="0.0" />
+    <big_message subtitle1="and prevented the creatures" subtitle2="from attacking the Federation." />
+    <set_timer name="Hostile wo Envoy 2" seconds="8" />
+    <set_variable name="Hostile wo Envoy1" value="1.0" />
+  </event>
+  <event id_arme="04c15477-9c63-45f8-94db-0517cf9eb1f8" parent_id_arme="8b246b20-dd56-4aec-a2e3-3ebb17250f92">
+    <if_timer_finished name="Hostile wo Envoy 2" />
+    <if_variable name="Hostile wo Envoy1" comparator="EQUALS" value="1.0" />
+    <set_variable name="Hostile wo Envoy1" value="2.0" />
+    <set_timer name="Hostile wo Envoy 3" seconds="8" />
+    <big_message subtitle1="but you abandoned your" subtitle2="envoy at FarPoint Station!" />
+  </event>
+  <event id_arme="1924aae7-9adb-4563-bf58-b1380c94e119" parent_id_arme="8b246b20-dd56-4aec-a2e3-3ebb17250f92">
+    <if_timer_finished name="Hostile wo Envoy 3" />
+    <if_variable name="Hostile wo Envoy1" comparator="EQUALS" value="2.0" />
+    <big_message subtitle1="It is unfortunate the creatures had to die" subtitle2="but you did what you had to do." />
+    <set_variable name="Hostile wo Envoy1" value="3.0" />
+    <set_timer name="EndMission" seconds="15" />
+  </event>
+  <folder_arme name_arme="Friendly w Envoy" id_arme="6a2db038-2eca-4613-a904-e35c009e8bbb" parent_id_arme="cb2f9e8f-453f-4cc2-b2eb-0ddc02f22238" expanded_arme="" />
+  <event id_arme="1bc7e877-a4c1-4a79-971d-04f703aac560" parent_id_arme="6a2db038-2eca-4613-a904-e35c009e8bbb">
+    <if_variable name="Victory - Friendly" comparator="EQUALS" value="0.0" />
+    <if_variable name="FarPointEnvoyDeployed" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="VictoryFriendly" />
+    <warning_popup_message message="Victory!" consoles="MHWESCO" />
+    <big_message title="Mission Accomplished" subtitle1="You successfully unlocked" subtitle2="the secrets of FarPoint Station," />
+    <set_timer name="Friendly w Envoy 1" seconds="8" />
+    <set_variable name="Friendly w Envoy1" value="0.0" />
+    <set_variable name="Victory - Friendly" value="1.0" />
+  </event>
+  <event id_arme="92f96325-5bde-488e-b84e-dcb6836797c5" parent_id_arme="6a2db038-2eca-4613-a904-e35c009e8bbb">
+    <if_timer_finished name="Friendly w Envoy 1" />
+    <if_variable name="Friendly w Envoy1" comparator="EQUALS" value="0.0" />
+    <big_message subtitle1="recovered your envoy and" subtitle2="made contact with a new life form." />
+    <set_timer name="Friendly w Envoy 2" seconds="8" />
+    <set_variable name="Friendly w Envoy1" value="1.0" />
+  </event>
+  <event id_arme="b9fb735e-53a2-4e3f-99b1-d2f99651dafd" parent_id_arme="6a2db038-2eca-4613-a904-e35c009e8bbb">
+    <if_timer_finished name="Friendly w Envoy 2" />
+    <if_variable name="Friendly w Envoy1" comparator="EQUALS" value="1.0" />
+    <set_variable name="Friendly w Envoy1" value="2.0" />
+    <set_timer name="Friendly w Envoy 3" seconds="8" />
+    <big_message subtitle1="We can only hope the people of" subtitle2="Deneb IV have learned from their misdeeds." />
+  </event>
+  <event id_arme="a9c456dd-9084-4529-84f2-1f01c70e0e97" parent_id_arme="6a2db038-2eca-4613-a904-e35c009e8bbb">
+    <if_timer_finished name="Friendly w Envoy 3" />
+    <if_variable name="Friendly w Envoy1" comparator="EQUALS" value="2.0" />
+    <big_message title="Congratulations!" subtitle1="" subtitle2="" />
+    <set_variable name="Friendly w Envoy1" value="3.0" />
+    <set_timer name="EndMission" seconds="15" />
+  </event>
+  <folder_arme name_arme="Friendly w/o Envoy" id_arme="39eb22de-563d-4e02-8db3-de74d6d1e646" parent_id_arme="cb2f9e8f-453f-4cc2-b2eb-0ddc02f22238" expanded_arme="" />
+  <event id_arme="58f7a212-0ba6-4935-b066-1c7a13fa02fe" parent_id_arme="39eb22de-563d-4e02-8db3-de74d6d1e646">
+    <if_variable name="FarPointEnvoyDeployed" comparator="LESS" value="3.0" />
+    <if_variable name="Victory - Friendly" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="VictoryFriendly" />
+    <warning_popup_message message="Victory!" consoles="MHWESCO" />
+    <big_message title="Mission Accomplished" subtitle1="You successfully unlocked" subtitle2="the secrets of FarPoint Station," />
+    <set_timer name="Friendly wo Envoy 1" seconds="8" />
+    <set_variable name="Friendly wo Envoy1" value="0.0" />
+    <set_variable name="Victory - Friendly" value="1.0" />
+  </event>
+  <event id_arme="0472dd66-482e-4dbc-b81f-66425fd92f5b" parent_id_arme="39eb22de-563d-4e02-8db3-de74d6d1e646">
+    <if_timer_finished name="Friendly wo Envoy 1" />
+    <if_variable name="Friendly wo Envoy1" comparator="EQUALS" value="0.0" />
+    <big_message subtitle1="and made contact with a new life form." subtitle2="" />
+    <set_timer name="Friendly wo Envoy 2" seconds="8" />
+    <set_variable name="Friendly wo Envoy1" value="1.0" />
+  </event>
+  <event id_arme="7e6960f6-3fc8-47dd-b7ad-1a4f2de793f4" parent_id_arme="39eb22de-563d-4e02-8db3-de74d6d1e646">
+    <if_timer_finished name="Friendly wo Envoy 2" />
+    <if_variable name="Friendly wo Envoy1" comparator="EQUALS" value="1.0" />
+    <set_variable name="Friendly wo Envoy1" value="2.0" />
+    <set_timer name="Friendly wo Envoy 3" seconds="8" />
+    <big_message subtitle1="However you abandoned your" subtitle2="envoy at FarPoint Station!" />
+  </event>
+  <event id_arme="a5d50e94-b3e1-48b6-8bb3-c50faa0fb7fa" parent_id_arme="39eb22de-563d-4e02-8db3-de74d6d1e646">
+    <if_timer_finished name="Friendly wo Envoy 3" />
+    <if_variable name="Friendly wo Envoy1" comparator="EQUALS" value="2.0" />
+    <big_message subtitle1="We can only hope the people of" subtitle2="Deneb IV have learned from their misdeeds." />
+    <set_variable name="Friendly wo Envoy1" value="3.0" />
+    <set_timer name="EndMission" seconds="15" />
+  </event>
+  <folder_arme name_arme="Defeats" id_arme="db66b85e-7f52-4d3f-860a-2550e7c3295a" expanded_arme="" />
+  <folder_arme name_arme="Defeat 3 - FPS and DS9 Destroyed" id_arme="4aaa9aed-ec10-430e-b9a5-4c940afaebb8" parent_id_arme="db66b85e-7f52-4d3f-860a-2550e7c3295a" expanded_arme="" />
+  <event id_arme="5540838b-6cd3-415d-8dab-96205234c7f5" parent_id_arme="4aaa9aed-ec10-430e-b9a5-4c940afaebb8">
+    <if_not_exists name="Deep Space 9" />
+    <if_variable name="Defeat" comparator="EQUALS" value="0.0" />
+    <set_variable name="Defeat" value="1.0" />
+    <big_message title="Mission Failed!" subtitle1="Everyone died." subtitle2="What more can i say?" />
+    <set_timer name="EndMission" seconds="15" />
+  </event>
+  <event name_arme="End Mission" id_arme="e1497d21-0aaa-4ef1-9363-812440363a58">
+    <if_timer_finished name="EndMission" />
+    <end_mission />
+  </event>
+</mission_data>
