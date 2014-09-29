@@ -10,7 +10,7 @@
     <set_variable name="isObjectsCreatedChapter0" value="0.0" />
     <set_variable name="isTerrainCreated" value="0.0" />
   </start>
-  <folder_arme name_arme="Templates" id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" expanded_arme="" />
+  <folder_arme name_arme="Templates" id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" />
   <folder_arme name_arme="Chapter Template" id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" parent_id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" expanded_arme="" />
   <event name_arme="Create Objects" id_arme="e29055db-fb62-464a-86d7-a669b7423c0c" parent_id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" />
   <folder_arme name_arme="Comm Traffic" id_arme="4b59ad46-2953-473d-9765-0b5f96239fb6" parent_id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" expanded_arme="" />
@@ -20,8 +20,7 @@
     <!--<set_timer value="0.0" seconds="10" name="tmrNextCommTraffic" />-->
   </event>
   <folder_arme name_arme="Create Universe" id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
-  <folder_arme name_arme="Locations" id_arme="92e4353f-2889-4b4d-b782-ff755db9e347" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
-  <event name_arme="Create Locations" id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" parent_id_arme="92e4353f-2889-4b4d-b782-ff755db9e347">
+  <event name_arme="Create Locations" id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isLocationsCreated" comparator="EQUALS" value="0.0" />
     <create type="station" x="10000.0" y="0.0" z="90000.0" angle="0" name="Deep Space 9" hullID="1000" />
@@ -29,8 +28,7 @@
     <set_variable name="isLocationsCreated" value="1.0" />
     <log text="Locations Created" />
   </event>
-  <folder_arme name_arme="Terrain" id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
-  <event name_arme="Create Terrain" id_arme="4d4fad44-dd9b-4e6f-b135-57dfbb4c1ccc" parent_id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d">
+  <event name_arme="Create Terrain" id_arme="4d4fad44-dd9b-4e6f-b135-57dfbb4c1ccc" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isTerrainCreated" comparator="EQUALS" value="0.0" />
     <create count="200" type="asteroids" startAngle="270" endAngle="360" startX="0.0" startY="0.1" startZ="100000.0" radius="50000" randomRange="2000" randomSeed="2" />
@@ -39,57 +37,195 @@
     <set_variable name="isTerrainCreated" value="1.0" />
     <log text="Terrain Created" />
   </event>
+  <event name_arme="Set Properties/Behaviors" id_arme="1f5f84dd-d1b9-4aac-a7e5-777823c14fd2" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff">
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <if_variable name="isLocationsCreated" comparator="EQUALS" value="0.0" />
+    <!--Verpunt Station-->
+    <set_object_property property="missileStoresHoming" value="0" name="Verpunt Station" />
+    <set_object_property property="missileStoresNuke" value="0" name="Verpunt Station" />
+    <set_object_property property="missileStoresMine" value="0" name="Verpunt Station" />
+    <set_object_property property="missileStoresECM" value="0" name="Verpunt Station" />
+    <set_object_property property="canBuild" value="0" name="Verpunt Station" />
+    <set_ship_text name="Verpunt Station" scan_desc="Long-range sensors are having difficulty scanning the station." />
+    <!--/Verpunt Station-->
+    <!--Deep Space 9-->
+    <!--/Deep Space 9-->
+  </event>
   <folder_arme name_arme="Prologue" id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
   <event name_arme="Create Objects" id_arme="97f00210-0ecc-455d-8a9a-48f7737d37b7" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isObjectsCreatedChapter0" comparator="EQUALS" value="0.0" />
     <!--Energy Reading 01-->
     <create type="whale" x="73527.0" y="0.0" z="76887.0" angle="0.0" name="Energy Reading 01" podnumber="0" />
-    <clear_ai name="Energy Reading 01" />
     <!--/Energy Reading 01-->
     <!--TSN Feynman-->
     <create type="neutral" x="84855.0" y="0.0" z="86224.0" angle="0" name="TSN Feynman" hullID="1502" sideValue="2" />
     <!--/TSN Feynman-->
     <!--Kralien scouts-->
     <create type="enemy" x="14399.0" y="0.0" z="10912.0" angle="270" name="KS01" raceKeys="Kralien" hullKeys="small Scout" sideValue="1" fleetnumber="1" />
-    <create type="enemy" x="14399.0" y="0.0" z="10912.0" angle="270" name="KS02" raceKeys="Kralien" hullKeys="small Scout" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="14399.0" y="0.0" z="11912.0" angle="270" name="KS02" raceKeys="Kralien" hullKeys="small Scout" sideValue="1" fleetnumber="1" />
     <!--/Kralien scouts-->
     <set_variable name="isObjectsCreatedChapter0" value="1.0" />
+    <log text="Chapter 0 - Objects Created" />
   </event>
-  <event name_arme="Object Properties + AI" id_arme="808d9bad-439d-486c-ad94-ed59408ff75b" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1">
-    <if_exists name="Energy Reading 01" />
-    <if_exists name="TSN Feynman" />
-    <if_exists name="KS01" />
-    <if_exists name="KS02" />
+  <event name_arme="Set Properties/Behaviors" id_arme="808d9bad-439d-486c-ad94-ed59408ff75b" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1">
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <if_variable name="isObjectsCreatedChapter0" comparator="EQUALS" value="1.0" />
     <!--TSN Feynman-->
-    <clear_ai name="TSN Feynman" />
+    <!--<clear_ai name="TSN Feynman" />-->
     <add_ai type="CHASE_WHALE" value1="20000" name="TSN Feynman" />
     <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Feynman" />
     <!--/TSN Feynman-->
     <!--Kralien scouts-->
+    <set_variable name="isKeepScoutsInNebula" value="1.0" />
     <!--/Kralien scouts-->
+    <!--Energy Reading 01-->
+    <set_ship_text name="Energy Reading 01" desc="An unknown verteron radiation source." />
+    <clear_ai name="Energy Reading 01" />
+    <!--/Energy Reading 01-->
+    <set_variable name="isObjectsCreatedChapter0" value="1.0" />
+    <log text="Chapter 0 - Object Properties/Behaviors Set" />
   </event>
   <folder_arme name_arme="Comm Traffic" id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
-  <event name_arme="TSN Command: Mission Orders" id_arme="bcc2738a-8957-4d3a-8ece-4552e823cc85" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+  <event name_arme="NOTIFICATION: Incoming orders" id_arme="be2c927c-ef42-4722-9f66-bc8f015ce387" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_variable name="commTrafficChapter0" comparator="LESS" value="1.0" />
     <if_timer_finished name="tmrMissionStart" />
     <!--Mission orders: Proceed to Verpunt. Preserve DS9.-->
-    <incoming_comms_text from="TSN Command">Greetings, Enterprise. Your orders are to rendez-vous with^Ambassador Troy at Verpunt Station. Also, keep an eye out ^for Kralien incursions in this sector.</incoming_comms_text>
+    <warning_popup_message message="Incoming message: ATTENTION TO ORDERS" consoles="MC">Incoming message: ATTENTION TO ORDERS</warning_popup_message>
+    <set_timer name="tmrNextCommTraffic" seconds="5" />
+  </event>
+  <event name_arme="TSN Command: Mission Orders" id_arme="a5b804d9-b796-49c0-bcd7-8a3bc85d2eaf" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+    <if_variable name="commTrafficChapter0" comparator="LESS" value="1.0" />
+    <if_timer_finished name="tmrNextCommTraffic" />
+    <!--Mission orders: Proceed to Verpunt. Preserve DS9.-->
+    <incoming_comms_text from="TSN Command">We're counting on you and your crew, Captain. TSN Command out.</incoming_comms_text>
+    <incoming_comms_text from="TSN Command">Remember that our key strategic objective is to secure an alliance with the Denubian people. Our fleet is already stretched thin, and we need more allies in this region of space.</incoming_comms_text>
+    <incoming_comms_text from="TSN Command">Enterprise, your primary mission is to provide assistance as needed for the diplomatic envoy currently on Verpunt Station. You are also on detached duty to provide protection for all TSN stations and ships in this sector.</incoming_comms_text>
     <set_variable name="commTrafficChapter0" value="1.0" />
     <set_timer name="tmrNextCommTraffic" seconds="10" />
   </event>
-  <event name_arme="TSN Feynman: Capt. Lanthos sends her regards" id_arme="a7ae7ba4-b744-4e0f-817f-0cc85c02084f" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+  <event name_arme="TSN Feynman: Capt. Lanthos sends her regards" id_arme="98ba0a58-9c42-473d-83a0-211dc112c667" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_variable name="commTrafficChapter0" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
-    <incoming_comms_text from="TSN Feynman">Greetings, Enterprise. Captain Lanthos sends her regards.^We'll be conducting scientific surveys in the area. We ^haven't seen any Kraliens yet, but we'll keep you posted.^Feynman out.</incoming_comms_text>
+    <incoming_comms_text from="TSN Feynman">Feynman out.</incoming_comms_text>
+    <incoming_comms_text from="TSN Feynman">We're investigating an unusual radiation source in this nebula. We haven't seen any Kraliens yet, but we'll keep you posted.</incoming_comms_text>
+    <incoming_comms_text from="TSN Feynman">Greetings, Enterprise. This is Lieutenant Lefler of the TSN Feynman. Captain Lanthos sends her regards.</incoming_comms_text>
     <set_variable name="commTrafficChapter0" value="2.0" />
+    <set_timer name="tmrNextCommTraffic" seconds="5" />
+  </event>
+  <event name_arme="Verpunt Station: Ambassador Troy is ready" id_arme="a7ae7ba4-b744-4e0f-817f-0cc85c02084f" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+    <if_variable name="commTrafficChapter0" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="tmrNextCommTraffic" />
+    <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Ambassador Troy to Enterprise. The mission on Verpunt is complete, and I am ready to return to DS9.</incoming_comms_text>
+    <set_ship_text name="Verpunt Station" desc="ORDERS: Pick up Ambassador Troy at this location, and transport her to DS9." />
+    <set_variable name="commTrafficChapter0" value="3.0" />
+    <set_timer name="tmrPickupAmbassador" seconds="120" />
     <set_timer name="tmrNextCommTraffic" seconds="10" />
   </event>
+  <event name_arme="Verpunt Station: Ambassador waiting" id_arme="7e1538ff-d7ed-416c-aee4-2b74f0fc0870" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+    <if_timer_finished name="tmrPickupAmbassador" />
+    <if_variable name="commTrafficChapter0" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <if_variable name="ch0AmbassadorIsWaiting" comparator="LESS" value="1.0" />
+    <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Enterprise, I am ready to return to DS9. What is your ETA?</incoming_comms_text>
+    <set_variable name="ch0AmbassadorIsWaiting" value="1.0" />
+    <set_timer name="tmrPickupAmbassador" seconds="300" />
+  </event>
+  <event name_arme="Verpunt Station: Ambassador STILL waiting" id_arme="934f27bc-25ba-4b37-bf89-69fca2e90f1c" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+    <if_timer_finished name="tmrPickupAmbassador" />
+    <if_variable name="commTrafficChapter0" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <if_variable name="ch0AmbassadorIsWaiting" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Captain, it is imperative that I review these treaty documents with the legal experts on DS9 immediately. What is your ETA?</incoming_comms_text>
+    <set_variable name="ch0AmbassadorIsWaiting" value="2.0" />
+    <set_timer name="tmrPickupAmbassador" seconds="600" />
+  </event>
+  <event name_arme="Verpunt Station: Ambassador is annoyed" id_arme="a3c2a5d2-98e3-4330-bb4d-50762a446151" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+    <if_timer_finished name="tmrPickupAmbassador" />
+    <if_variable name="commTrafficChapter0" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <if_variable name="ch0AmbassadorIsWaiting" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Captain, need I remind you that your primary mission is to support the efforts of the Diplomatic Corps in this sector? I require immediate transport to DS9. Taking potshots at asteroids and passing ships can wait.</incoming_comms_text>
+    <set_variable name="ch0AmbassadorIsWaiting" value="3.0" />
+  </event>
   <folder_arme name_arme="Chapter 1 - Arrival at Verpunt" id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
+  <folder_arme name_arme="Trigger Chapter Events" id_arme="53c0341b-a520-4db0-ab83-7d6f0556a0ee" parent_id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
+  <event name_arme="Enterprise approaches Verpunt Station" id_arme="81dc9d0f-cb81-463f-88f7-f00bc4cd2010" parent_id_arme="53c0341b-a520-4db0-ab83-7d6f0556a0ee">
+    <if_inside_sphere name="Enterprise-D" centerX="88045" centerY="0" centerZ="30694" radius="5000" />
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <set_variable name="commTrafficChapter1" value="0.0" />
+    <set_variable name="chapter" value="1.0" />
+  </event>
+  <event name_arme="Enterprise leaves Verpunt Station space" id_arme="4eefb221-dc95-4d9c-8d5e-bbba51209756" parent_id_arme="53c0341b-a520-4db0-ab83-7d6f0556a0ee">
+    <if_outside_sphere name="Enterprise-D" centerX="88045" centerY="0" centerZ="30694" radius="30000" />
+    <if_variable name="chapter" comparator="EQUALS" value="1.0" />
+    <set_variable name="ch1CreateKralienFleet" value="1.0" />
+  </event>
   <folder_arme name_arme="Create Objects" id_arme="7d90bdf8-f851-454c-9516-1211d5de1060" parent_id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
-  <event name_arme="Create Incoming Kralien Fleet" id_arme="539fbced-25b4-4c3a-9d26-99c36b1849f7" parent_id_arme="7d90bdf8-f851-454c-9516-1211d5de1060" />
+  <event name_arme="Create Incoming Kralien Fleet" id_arme="539fbced-25b4-4c3a-9d26-99c36b1849f7" parent_id_arme="7d90bdf8-f851-454c-9516-1211d5de1060">
+    <if_variable name="ch1CreateKralienFleet" comparator="EQUALS" value="1.0" />
+    <set_variable name="ch1CreateKralienFleet" value="2.0" />
+    <create type="enemy" x="50872.0" y="0.0" z="68.0" angle="200" name="KS03" hullID="2001" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="50872.0" y="0.0" z="560.0" angle="205" name="KS04" hullID="2001" sideValue="1" fleetnumber="1" />
+  </event>
+  <event name_arme="Set Properties/Behaviors" id_arme="1025ccfa-4213-4ec2-87d6-623b2c3c71f5" parent_id_arme="7d90bdf8-f851-454c-9516-1211d5de1060">
+    <if_variable name="ch1CreateKralienFleet" comparator="EQUALS" value="2.0" />
+    <!--Kralien Fleet 01-->
+    <set_fleet_property property="fleetSpacing" value="500.0" fleetIndex="1" />
+    <set_fleet_property property="fleetMaxRadius" value="5000.0" fleetIndex="1" />
+    <add_ai type="TRY_TO_BECOME_LEADER" name="KS03" />
+    <add_ai type="FOLLOW_LEADER" name="KS01" />
+    <add_ai type="FOLLOW_LEADER" name="KS02" />
+    <add_ai type="FOLLOW_LEADER" name="KS04" />
+    <add_ai type="ATTACK" targetName="Verpunt Station" value1="0.8" name="KS03" />
+    <set_variable name="isKeepScoutsInNebula" value="0.0" />
+    <!--/Kralien Fleet 01-->
+    <set_variable name="ch1CreateKralienFleet" value="3.0" />
+  </event>
   <folder_arme name_arme="Comm Traffic" id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669" parent_id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
-  <event name_arme="Ambassador Troy: Return to DS9" id_arme="89c0c09b-b009-4c5e-83e7-5b0504751f33" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669" />
+  <event name_arme="Verpunt Station: Cleared for approach" id_arme="89c0c09b-b009-4c5e-83e7-5b0504751f33" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
+    <if_variable name="commTrafficChapter1" comparator="EQUALS" value="0.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Verpunt Station Traffic Control">Enterprise, welcome to Verpunt Station. You are cleared for approach on your current vector. Please have your Comm officer notify us when you are ready to dock.</incoming_comms_text>
+    <set_variable name="commTrafficChapter1" value="1.0" />
+  </event>
+  <event name_arme="Verpunt Station: Refueling" id_arme="38feb7c0-6a36-4b78-ace9-231c238effe2" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
+    <if_variable name="commTrafficChapter1" comparator="EQUALS" value="1.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="1.0" />
+    <if_docked name="Verpunt Station" />
+    <incoming_comms_text from="Verpunt Station Ground Crew">Enterprise, we're refueling your reserves right now. Sorry we don't carry any armaments compatible with your systems, but we'll keep your fuel tanks topped off anytime you want to drop by.</incoming_comms_text>
+  </event>
+  <event name_arme="Docking Bay 01: Ambassador Troy is aboard" id_arme="d6b21793-3a22-4d48-a61f-4363083d6a08" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
+    <if_variable name="commTrafficChapter1" comparator="EQUALS" value="1.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="1.0" />
+    <if_docked name="Verpunt Station" />
+    <incoming_comms_text from="Docking Bay 01">Lieutenant Chel to bridge. The ambassador is aboard and ready to get under way.</incoming_comms_text>
+    <warning_popup_message message="SENSORS: Unusually high levels of verteron radiation present. Radiation is within safe limits." consoles="S" />
+    <set_ship_text name="Verpunt Station" desc="Sensors show unusually high levels of ambient verteron radiation in proximity to the station." scan_desc="Unable to complete sensor sweep due to verteron radiation interference." />
+    <set_variable name="commTrafficChapter1" value="2.0" />
+    <set_variable name="isAmbassadorAboard" value="1.0" />
+    <set_timer name="tmrNextCommTraffic" seconds="5" />
+  </event>
+  <event name_arme="Ambassador Troy: Ready to return to DS9" id_arme="844bc95e-819d-409e-8e21-aacc59e25bb1" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
+    <if_variable name="commTrafficChapter1" comparator="EQUALS" value="2.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Guest Quarters 11C">Ambassador Troy to bridge. Captain, thank you for assigning Lieutenant Chel as our guide. I'm aware that some officers of the TSN are...uneasy around telepaths. It's nice to know that your crew are not among them.</incoming_comms_text>
+    <set_timer name="tmrNextCommTraffic" seconds="15" />
+    <set_variable name="commTrafficChapter1" value="3.0" />
+  </event>
+  <event name_arme="Verpunt Station: Contacts approaching A3" id_arme="be7e1db5-66a6-4836-83ea-9c1398082c77" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
+    <if_variable name="commTrafficChapter1" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="Verpunt Station Traffic Control">Enterprise, be advised: we are reading multiple unknown contacts bearing 200 near grid A3.</incoming_comms_text>
+    <set_timer name="tmrNextCommTraffic" seconds="5" />
+    <set_variable name="commTrafficChapter1" value="4.0" />
+  </event>
+  <event name_arme="Ambassador Troy: Stay on mission" id_arme="c148199b-ea28-47f5-a36d-a1ee7632c67e" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
+    <if_variable name="commTrafficChapter1" comparator="EQUALS" value="4.0" />
+    <if_timer_finished name="tmrNextCommTraffic" />
+    <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Captain, your priority is still to deliver me and these treaty documents to DS9. Don't even think about chasing sensor ghosts right now. And-- oh, Captain, that was not a nice thought about telepaths. You were doing so well, too.^-- end transmission --</incoming_comms_text>
+    <set_timer name="tmrNextCommTraffic" seconds="15" />
+    <set_variable name="commTrafficChapter1" value="5.0" />
+  </event>
   <folder_arme name_arme="Chapter 2 - Successfully Returned to DS9 with Envoy" id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" expanded_arme="" />
   <folder_arme name_arme="Create Objects" id_arme="0188964a-58dd-4e88-b827-ef4a67ce8fdc" parent_id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" expanded_arme="" />
   <folder_arme name_arme="Comm Traffic" id_arme="b422148b-2752-4569-b2d3-95cb57b2fb67" parent_id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" />
@@ -115,9 +251,23 @@
   <folder_arme name_arme="Create Objects" id_arme="efa5bcbf-8727-47b4-ac76-7ce2c319c6a7" parent_id_arme="647b8b0e-1d66-4179-85c5-245ae0d33bd5" expanded_arme="" />
   <folder_arme name_arme="Comm Traffic" id_arme="ba37e51d-94a3-43d7-8cd5-273e8c6c886e" parent_id_arme="647b8b0e-1d66-4179-85c5-245ae0d33bd5" />
   <folder_arme name_arme="General Condition Triggers" id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160" expanded_arme="" />
-  <event name_arme="Event 2" id_arme="c3c3c4c2-357f-4ecf-911d-3f538db5159a" parent_id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160">
+  <event name_arme="Keep Kralien Scouts inside nebula" id_arme="c3c3c4c2-357f-4ecf-911d-3f538db5159a" parent_id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160">
     <if_outside_sphere name="KS01" centerX="20284" centerY="0" centerZ="19337" radius="20000" />
+    <if_variable name="isKeepScoutsInNebula" comparator="EQUALS" value="1.0" />
     <add_ai type="POINT_THROTTLE" value1="20284.0" value2="0.0" value3="19337.0" value4="0.5" name="KS01" />
     <add_ai type="POINT_THROTTLE" value1="20284.0" value2="0.0" value3="19337.0" value4="0.5" name="KS02" />
+  </event>
+  <folder_arme name_arme="Victory Conditions" id_arme="65d97889-706b-4ec5-8b62-d39a5d349d0e" parent_id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160" expanded_arme="" />
+  <folder_arme name_arme="Defeat Conditions" id_arme="8a4e0034-b6e8-4193-ac6d-e75ce0bb5061" parent_id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160" expanded_arme="" />
+  <event name_arme="Artemis Destroyed" id_arme="e58e9218-bb78-43c9-9b42-0a72caf5e4af" parent_id_arme="8a4e0034-b6e8-4193-ac6d-e75ce0bb5061">
+    <if_not_exists name="Enterprise-D" />
+  </event>
+  <event name_arme="DS9 Destroyed" id_arme="8f73f5a2-23b5-47b3-9cab-549dc1684c33" parent_id_arme="8a4e0034-b6e8-4193-ac6d-e75ce0bb5061">
+    <if_not_exists name="Enterprise-D" />
+  </event>
+  <event name_arme="End Mission" id_arme="2f96c8e5-01ab-4831-80f5-5e25b8faea61" parent_id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160">
+    <if_timer_finished name="tmrMissionEnd" />
+    <end_mission />
+    <log text="Mission Ended" />
   </event>
 </mission_data>
