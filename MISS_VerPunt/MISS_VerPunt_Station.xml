@@ -1,0 +1,56 @@
+<mission_data version="1.0" background_id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start name_arme="Start">
+    <create type="player" x="50000" y="0" z="50000" name="Enterprise-D" />
+    <set_skybox_index index="9" />
+    <big_message title="Mission to VerPunt Station" subtitle1="by Cristos L-C (cristos@cristoslc.com)" subtitle2="based on FarPoint Station by Travis Head" />
+    <set_timer name="tmrMissionStart" seconds="10" />
+    <set_variable name="chapter" value="0.0" />
+  </start>
+  <folder_arme name_arme="Templates" id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" />
+  <folder_arme name_arme="Chapter Template" id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" parent_id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" expanded_arme="" />
+  <folder_arme name_arme="Create Objects" id_arme="81872aeb-316c-47d9-aede-a692b1b60c27" parent_id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" />
+  <folder_arme name_arme="Comm Traffic" id_arme="4b59ad46-2953-473d-9765-0b5f96239fb6" parent_id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" />
+  <folder_arme name_arme="Create Universe" id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
+  <folder_arme name_arme="Locations" id_arme="92e4353f-2889-4b4d-b782-ff755db9e347" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
+  <event name_arme="Create Locations" id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" parent_id_arme="92e4353f-2889-4b4d-b782-ff755db9e347">
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <create type="station" x="10000.0" y="0.0" z="90000.0" name="Deep Space 9" hullID="1000" sideValue="2" />
+  </event>
+  <folder_arme name_arme="Terrain" id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
+  <event name_arme="Create Terrain" id_arme="4d4fad44-dd9b-4e6f-b135-57dfbb4c1ccc" parent_id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d">
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <create count="0" type="asteroids" startAngle="200" endAngle="90" startX="10000.0" startY="0.0" startZ="90000.0" radius="10000" randomRange="500" randomSeed="3" />
+  </event>
+  <folder_arme name_arme="Prologue" id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
+  <folder_arme name_arme="Create Objects" id_arme="8c81d1ce-e9e9-4d08-8a42-01a473f110bf" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
+  <event name_arme="Create Kralien Scouts in Nebula" id_arme="97f00210-0ecc-455d-8a9a-48f7737d37b7" parent_id_arme="8c81d1ce-e9e9-4d08-8a42-01a473f110bf" />
+  <folder_arme name_arme="Comm Traffic" id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
+  <event name_arme="TSN Command: Mission Orders" id_arme="bcc2738a-8957-4d3a-8ece-4552e823cc85" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+    <!--Mission orders: Proceed to Verpunt. Preserve DS9.-->
+  </event>
+  <folder_arme name_arme="Chapter 1 - Arrival at Verpunt" id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
+  <folder_arme name_arme="Create Objects" id_arme="7d90bdf8-f851-454c-9516-1211d5de1060" parent_id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
+  <event name_arme="Create Incoming Kralien Fleet" id_arme="539fbced-25b4-4c3a-9d26-99c36b1849f7" parent_id_arme="7d90bdf8-f851-454c-9516-1211d5de1060" />
+  <folder_arme name_arme="Comm Traffic" id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669" parent_id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
+  <event name_arme="Ambassador Troy: Return to DS9" id_arme="89c0c09b-b009-4c5e-83e7-5b0504751f33" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669" />
+  <folder_arme name_arme="Chapter 2 - Successfully Returned to DS9 with Envoy" id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" expanded_arme="" />
+  <folder_arme name_arme="Create Objects" id_arme="0188964a-58dd-4e88-b827-ef4a67ce8fdc" parent_id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" expanded_arme="" />
+  <event name_arme="(no new objects)" id_arme="ff0bcc07-cb7c-4f3a-8701-8f2aa4e920d9" parent_id_arme="0188964a-58dd-4e88-b827-ef4a67ce8fdc" />
+  <folder_arme name_arme="Comm Traffic" id_arme="b422148b-2752-4569-b2d3-95cb57b2fb67" parent_id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" />
+  <folder_arme name_arme="Chapter 3 - After Envoy returned to DS9" id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
+  <folder_arme name_arme="Create Objects" id_arme="28ee6abb-a1c4-4976-955a-df1b1aab654e" parent_id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
+  <event name_arme="Unknown Entity 1" id_arme="ef2a6539-c519-4c18-b16e-2099a60120b5" parent_id_arme="28ee6abb-a1c4-4976-955a-df1b1aab654e" />
+  <folder_arme name_arme="Comm Traffic" id_arme="3cf65b5c-df1b-413a-8050-54c006f30a44" parent_id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" />
+  <folder_arme name_arme="Chapter 4 - Rescue Verpunt" id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" expanded_arme="" />
+  <folder_arme name_arme="Create Objects" id_arme="80de8a77-c730-4f23-9f0f-3d335551644e" parent_id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" expanded_arme="" />
+  <event name_arme="(no new objects)" id_arme="5fc560c0-d6a1-41e2-bd58-d26b73d91e25" parent_id_arme="80de8a77-c730-4f23-9f0f-3d335551644e" />
+  <folder_arme name_arme="Comm Traffic" id_arme="7b057e9d-4928-4697-8663-a4c886e75464" parent_id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" />
+  <folder_arme name_arme="Chapter 5 - Trapped Creature is Freed" id_arme="21643867-5f8b-4f39-b4fd-09712a8e7afd" expanded_arme="" />
+  <folder_arme name_arme="Create Objects" id_arme="791a9e20-3733-46e4-9c4c-b6d83d77036f" parent_id_arme="21643867-5f8b-4f39-b4fd-09712a8e7afd" expanded_arme="" />
+  <event name_arme="Unknown Entity 2" id_arme="21184ca3-1187-4fb0-b314-4b7fc3d51670" parent_id_arme="791a9e20-3733-46e4-9c4c-b6d83d77036f" />
+  <folder_arme name_arme="Comm Traffic" id_arme="875df558-8f08-4fe0-95c8-b74ca615d828" parent_id_arme="21643867-5f8b-4f39-b4fd-09712a8e7afd" />
+  <folder_arme name_arme="Chapter 6 - Victory Conditions / Epilogue" id_arme="119eeeb3-4ff2-4980-89a0-9e424eeac7c2" expanded_arme="" />
+  <folder_arme name_arme="Create Objects" id_arme="45d29613-2878-4ca7-b3e7-52930bad8d0e" parent_id_arme="119eeeb3-4ff2-4980-89a0-9e424eeac7c2" expanded_arme="" />
+  <event name_arme="(no new objects)" id_arme="570b6b63-9e5f-45e1-a17d-6fffb7650ceb" parent_id_arme="45d29613-2878-4ca7-b3e7-52930bad8d0e" />
+  <folder_arme name_arme="Comm Traffic" id_arme="9ceb8603-95d1-4e4b-906b-c1b56927768f" parent_id_arme="119eeeb3-4ff2-4980-89a0-9e424eeac7c2" />
+</mission_data>
