@@ -14,12 +14,16 @@
   <folder_arme name_arme="Locations" id_arme="92e4353f-2889-4b4d-b782-ff755db9e347" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
   <event name_arme="Create Locations" id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" parent_id_arme="92e4353f-2889-4b4d-b782-ff755db9e347">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
-    <create type="station" x="10000.0" y="0.0" z="90000.0" name="Deep Space 9" hullID="1000" sideValue="2" />
+    <if_variable name="isLocationsCreated" comparator="EQUALS" value="0.0" />
+    <create type="station" x="10000.0" y="0.0" z="90000.0" name="Deep Space 9" hullID="1000" />
+    <set_variable name="isLocationsCreated" value="1.0" />
   </event>
   <folder_arme name_arme="Terrain" id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
   <event name_arme="Create Terrain" id_arme="4d4fad44-dd9b-4e6f-b135-57dfbb4c1ccc" parent_id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
-    <create count="0" type="asteroids" startAngle="200" endAngle="90" startX="10000.0" startY="0.0" startZ="90000.0" radius="10000" randomRange="500" randomSeed="3" />
+    <if_variable name="isTerrainCreated" comparator="EQUALS" value="0.0" />
+    <create count="200" type="asteroids" startX="40042.0" startY="0.0" startZ="99045.0" endX="581.0" endY="0.0" endZ="59460.0" />
+    <set_variable name="isTerrainCreated" value="1.0" />
   </event>
   <folder_arme name_arme="Prologue" id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
   <folder_arme name_arme="Create Objects" id_arme="8c81d1ce-e9e9-4d08-8a42-01a473f110bf" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
