@@ -5,14 +5,18 @@
     <big_message title="Mission to VerPunt Station" subtitle1="by Cristos L-C (cristos@cristoslc.com)" subtitle2="based on FarPoint Station by Travis Head" />
     <set_timer name="tmrMissionStart" seconds="10" />
     <set_variable name="chapter" value="0.0" />
+    <set_variable name="commTrafficChapter0" value="0.0" />
+    <set_variable name="isLocationsCreated" value="0.0" />
+    <set_variable name="isObjectsCreatedChapter0" value="0.0" />
+    <set_variable name="isTerrainCreated" value="0.0" />
   </start>
-  <folder_arme name_arme="Templates" id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" />
+  <folder_arme name_arme="Templates" id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" expanded_arme="" />
   <folder_arme name_arme="Chapter Template" id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" parent_id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" expanded_arme="" />
   <event name_arme="Create Objects" id_arme="e29055db-fb62-464a-86d7-a669b7423c0c" parent_id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" />
   <folder_arme name_arme="Comm Traffic" id_arme="4b59ad46-2953-473d-9765-0b5f96239fb6" parent_id_arme="71126027-b9a6-4870-bcba-d511fcf7cb1a" expanded_arme="" />
   <event name_arme="Ship: Statement" id_arme="36f99609-b742-48b6-b672-5698d17c9eda" parent_id_arme="4b59ad46-2953-473d-9765-0b5f96239fb6">
-    <if_variable comparator="LESS" value="1.0" />
-    <set_variable value="1.0" />
+    <!--<if_variable comparator="LESS" value="1.0" />-->
+    <!--<set_variable value="1.0" />-->
   </event>
   <folder_arme name_arme="Create Universe" id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
   <folder_arme name_arme="Locations" id_arme="92e4353f-2889-4b4d-b782-ff755db9e347" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
@@ -41,7 +45,7 @@
     <!--TSN Feynman-->
     <create type="neutral" x="84855.0" y="0.0" z="86224.0" angle="0" name="TSN Feynman" hullID="1502" sideValue="2" />
     <set_object_property property="topSpeed" value="10.0" name="TSN Feynman" />
-    <create type="genericMesh" x="73527.0" y="0.0" z="76887.0" angle="0" name="Energy Reading 01" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="whale" x="73527.0" y="0.0" z="76887.0" angle="0.0" name="Energy Reading 01" podnumber="0" />
     <clear_ai name="TSN Feynman" />
     <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Feynman" />
     <add_ai type="TARGET_THROTTLE" targetName="Energy Reading 01" value1="0.5" name="TSN Feynman" />
