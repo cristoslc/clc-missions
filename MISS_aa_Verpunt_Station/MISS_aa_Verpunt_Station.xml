@@ -1,6 +1,6 @@
 <mission_data version="1.0" background_id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
   <start name_arme="Start">
-    <create type="player" x="50000" y="0" z="50000" name="Enterprise-D" />
+    <create type="player" x="10000.0" y="0" z="87000.0" angle="180.0" name="Enterprise-D" />
     <set_skybox_index index="9" />
     <big_message title="Mission to VerPunt Station" subtitle1="by Cristos L-C (cristos@cristoslc.com)" subtitle2="based on FarPoint Station by Travis Head" />
     <set_timer name="tmrMissionStart" seconds="10" />
@@ -15,15 +15,20 @@
   <event name_arme="Create Locations" id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" parent_id_arme="92e4353f-2889-4b4d-b782-ff755db9e347">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isLocationsCreated" comparator="EQUALS" value="0.0" />
-    <create type="station" x="10000.0" y="0.0" z="90000.0" name="Deep Space 9" hullID="1000" />
+    <create type="station" x="10000.0" y="0.0" z="90000.0" angle="0" name="Deep Space 9" hullID="1000" />
+    <create type="station" x="88216.0" y="0.0" z="30580.0" angle="0" name="Verpunt Station" hullKeys="base Base" sideValue="2" />
     <set_variable name="isLocationsCreated" value="1.0" />
+    <log text="Locations Created" />
   </event>
   <folder_arme name_arme="Terrain" id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
   <event name_arme="Create Terrain" id_arme="4d4fad44-dd9b-4e6f-b135-57dfbb4c1ccc" parent_id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isTerrainCreated" comparator="EQUALS" value="0.0" />
-    <create count="200" type="asteroids" startX="40042.0" startY="0.0" startZ="99045.0" endX="581.0" endY="0.0" endZ="59460.0" />
+    <create count="300" type="asteroids" startX="40042.0" startY="-10.0" startZ="99045.0" endX="581.0" endY="10.0" endZ="59460.0" randomRange="100" randomSeed="2" />
+    <create count="500" type="nebulas" startX="24482.0" startY="0.0" startZ="22240.0" radius="15000" randomRange="15000" />
+    <create count="500" type="nebulas" startX="70789.0" startY="0.0" startZ="79128.0" radius="7961" randomRange="25000" randomSeed="10" />
     <set_variable name="isTerrainCreated" value="1.0" />
+    <log text="Terrain Created" />
   </event>
   <folder_arme name_arme="Prologue" id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
   <folder_arme name_arme="Create Objects" id_arme="8c81d1ce-e9e9-4d08-8a42-01a473f110bf" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
