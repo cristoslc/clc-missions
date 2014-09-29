@@ -1,14 +1,10 @@
 <mission_data version="1.0" background_id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
   <start name_arme="Start">
-    <create type="player" x="10000.0" y="0" z="87000.0" angle="180.0" name="Enterprise-D" />
+    <create type="player" x="10000.0" y="0" z="87000.0" name="Enterprise-D" />
     <set_skybox_index index="9" />
     <big_message title="Mission to VerPunt Station" subtitle1="by Cristos L-C (cristos@cristoslc.com)" subtitle2="based on FarPoint Station by Travis Head" />
     <set_timer name="tmrMissionStart" seconds="10" />
     <set_variable name="chapter" value="0.0" />
-    <set_variable name="commTrafficChapter0" value="0.0" />
-    <set_variable name="isLocationsCreated" value="0.0" />
-    <set_variable name="isObjectsCreatedChapter0" value="0.0" />
-    <set_variable name="isTerrainCreated" value="0.0" />
     <set_variable name="damConAlpha" value="6.0" />
   </start>
   <folder_arme name_arme="Templates" id_arme="871b362c-0ea6-495e-999c-3f73bd16e91b" />
@@ -84,68 +80,72 @@
     <set_ship_text name="Energy Reading 01" desc="An unknown verteron radiation source." />
     <clear_ai name="Energy Reading 01" />
     <!--/Energy Reading 01-->
-    <set_variable name="isObjectsCreatedChapter0" value="1.0" />
+    <set_variable name="isObjectsCreatedChapter0" value="2.0" />
     <log text="Chapter 0 - Object Properties/Behaviors Set" />
   </event>
   <folder_arme name_arme="Comm Traffic" id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
   <event name_arme="NOTIFICATION: Incoming orders" id_arme="be2c927c-ef42-4722-9f66-bc8f015ce387" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
-    <if_variable name="commTrafficChapter0" comparator="LESS" value="1.0" />
+    <if_variable name="commTrafficChapter0" comparator="EQUALS" value="0.0" />
     <if_timer_finished name="tmrMissionStart" />
     <!--Mission orders: Proceed to Verpunt. Preserve DS9.-->
-    <warning_popup_message message="Incoming message: ATTENTION TO ORDERS" consoles="MC">Incoming message: ATTENTION TO ORDERS</warning_popup_message>
+    <!--<warning_popup_message message="Incoming message: ATTENTION TO ORDERS" consoles="MC">Incoming message: ATTENTION TO ORDERS</warning_popup_message>-->
     <set_timer name="tmrNextCommTraffic" seconds="5" />
+    <set_variable name="commTrafficChapter0" value="1.0" />
   </event>
   <event name_arme="TSN Command: Mission Orders" id_arme="a5b804d9-b796-49c0-bcd7-8a3bc85d2eaf" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
-    <if_variable name="commTrafficChapter0" comparator="LESS" value="1.0" />
+    <if_variable name="commTrafficChapter0" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
     <!--Mission orders: Proceed to Verpunt. Preserve DS9.-->
+    <incoming_comms_text from="TSN Command">Enterprise, your primary mission is to provide assistance as needed for the diplomatic envoy currently on Verpunt Station. You are also on detached duty to provide protection for all TSN stations and ships in this sector.^Remember that our key strategic objective is to secure an alliance with the Denubian people. Our fleet is already stretched thin, and we need more allies in this region of space.</incoming_comms_text>
     <incoming_comms_text from="TSN Command">We're counting on you and your crew, Captain. TSN Command out.</incoming_comms_text>
-    <incoming_comms_text from="TSN Command">Remember that our key strategic objective is to secure an alliance with the Denubian people. Our fleet is already stretched thin, and we need more allies in this region of space.</incoming_comms_text>
-    <incoming_comms_text from="TSN Command">Enterprise, your primary mission is to provide assistance as needed for the diplomatic envoy currently on Verpunt Station. You are also on detached duty to provide protection for all TSN stations and ships in this sector.</incoming_comms_text>
-    <set_variable name="commTrafficChapter0" value="1.0" />
-    <set_timer name="tmrNextCommTraffic" seconds="10" />
+    <set_variable name="commTrafficChapter0" value="2.0" />
+    <set_timer name="tmrNextCommTraffic" seconds="30" />
   </event>
   <event name_arme="TSN Feynman: Capt. Lanthos sends her regards" id_arme="98ba0a58-9c42-473d-83a0-211dc112c667" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
-    <if_variable name="commTrafficChapter0" comparator="EQUALS" value="1.0" />
+    <if_variable name="commTrafficChapter0" comparator="EQUALS" value="2.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
     <incoming_comms_text from="TSN Feynman">Feynman out.</incoming_comms_text>
     <incoming_comms_text from="TSN Feynman">We're investigating an unusual radiation source in this nebula. We haven't seen any Kraliens yet, but we'll keep you posted.</incoming_comms_text>
     <incoming_comms_text from="TSN Feynman">Greetings, Enterprise. This is Lieutenant Lefler of the TSN Feynman. Captain Lanthos sends her regards.</incoming_comms_text>
-    <set_variable name="commTrafficChapter0" value="2.0" />
-    <set_timer name="tmrNextCommTraffic" seconds="5" />
+    <set_variable name="commTrafficChapter0" value="3.0" />
+    <set_timer name="tmrNextCommTraffic" seconds="15" />
   </event>
   <event name_arme="Verpunt Station: Ambassador Troy is ready" id_arme="a7ae7ba4-b744-4e0f-817f-0cc85c02084f" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
-    <if_variable name="commTrafficChapter0" comparator="EQUALS" value="2.0" />
+    <if_variable name="commTrafficChapter0" comparator="EQUALS" value="3.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
     <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Ambassador Troy to Enterprise. The mission on Verpunt is complete, and I am ready to return to DS9.</incoming_comms_text>
     <set_ship_text name="Verpunt Station" desc="ORDERS: Pick up Ambassador Troy at this location, and transport her to DS9." />
-    <set_variable name="commTrafficChapter0" value="3.0" />
+    <set_variable name="commTrafficChapter0" value="4.0" />
     <set_timer name="tmrPickupAmbassador" seconds="120" />
     <set_timer name="tmrNextCommTraffic" seconds="10" />
   </event>
   <event name_arme="Verpunt Station: Ambassador waiting" id_arme="7e1538ff-d7ed-416c-aee4-2b74f0fc0870" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_timer_finished name="tmrPickupAmbassador" />
-    <if_variable name="commTrafficChapter0" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="commTrafficChapter0" comparator="EQUALS" value="4.0" />
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
-    <if_variable name="ch0AmbassadorIsWaiting" comparator="LESS" value="1.0" />
+    <if_variable name="ch0AmbassadorIsWaiting" comparator="EQUALS" value="0.0" />
+    <if_variable name="isAmbassadorAboard" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Enterprise, I am ready to return to DS9. What is your ETA?</incoming_comms_text>
+    <set_timer name="tmrCommNag" seconds="120" />
     <set_variable name="ch0AmbassadorIsWaiting" value="1.0" />
-    <set_timer name="tmrPickupAmbassador" seconds="300" />
+    <set_variable name="commTrafficChapter0" value="5.0" />
   </event>
   <event name_arme="Verpunt Station: Ambassador STILL waiting" id_arme="934f27bc-25ba-4b37-bf89-69fca2e90f1c" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
-    <if_timer_finished name="tmrPickupAmbassador" />
+    <if_timer_finished name="tmrCommNag" />
     <if_variable name="commTrafficChapter0" comparator="GREATER_EQUAL" value="3.0" />
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="ch0AmbassadorIsWaiting" comparator="EQUALS" value="1.0" />
+    <if_variable name="isAmbassadorAboard" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Captain, it is imperative that I review these treaty documents with the legal experts on DS9 immediately. What is your ETA?</incoming_comms_text>
     <set_variable name="ch0AmbassadorIsWaiting" value="2.0" />
-    <set_timer name="tmrPickupAmbassador" seconds="600" />
+    <set_timer name="tmrCommNag" seconds="600" />
   </event>
   <event name_arme="Verpunt Station: Ambassador is annoyed" id_arme="a3c2a5d2-98e3-4330-bb4d-50762a446151" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_timer_finished name="tmrPickupAmbassador" />
     <if_variable name="commTrafficChapter0" comparator="GREATER_EQUAL" value="3.0" />
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
-    <if_variable name="ch0AmbassadorIsWaiting" comparator="EQUALS" value="2.0" />
+    <if_variable name="ch0AmbassadorIsWaiting" comparator="GREATER_EQUAL" value="2.0" />
+    <if_variable name="isAmbassadorAboard" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Captain, need I remind you that your primary mission is to support the efforts of the Diplomatic Corps in this sector? I require immediate transport to DS9. Taking potshots at asteroids and passing ships can wait.</incoming_comms_text>
     <set_variable name="ch0AmbassadorIsWaiting" value="3.0" />
   </event>
@@ -214,7 +214,7 @@
   <folder_arme name_arme="Trigger Chapter Events" id_arme="cee97d40-f070-4958-84af-a6610e2fc2ee" parent_id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" expanded_arme="" />
   <event name_arme="Enterprise leaves Verpunt Station space" id_arme="4eefb221-dc95-4d9c-8d5e-bbba51209756" parent_id_arme="cee97d40-f070-4958-84af-a6610e2fc2ee">
     <if_outside_sphere name="Enterprise-D" centerX="88045" centerY="0" centerZ="30694" radius="30000" />
-    <if_variable name="chapter" comparator="LESS" value="2.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="1.0" />
     <set_variable name="ch2CreateKralienFleet" value="1.0" />
     <set_variable name="commTrafficChapter2" value="0.0" />
     <set_variable name="chapter" value="2.0" />
@@ -261,6 +261,7 @@
     <if_distance name1="Enterprise-D" name2="KS03" comparator="GREATER" value="10000.0" />
     <if_exists name="KS03" />
     <if_timer_finished name="tmrCommNag" />
+    <if_variable name="chapter" comparator="EQUALS" value="2.0" />
     <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Captain, Verpunt Station is critical to the TSN's strategic defense of this sector. We must save them from the Kraliens.</incoming_comms_text>
     <set_variable name="commTrafficChapter2" value="2.0" />
     <set_timer name="tmrCommNag" seconds="60" />
