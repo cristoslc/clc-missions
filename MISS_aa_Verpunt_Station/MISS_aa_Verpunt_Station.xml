@@ -17,6 +17,7 @@
   <event name_arme="Ship: Statement" id_arme="36f99609-b742-48b6-b672-5698d17c9eda" parent_id_arme="4b59ad46-2953-473d-9765-0b5f96239fb6">
     <!--<if_variable comparator="LESS" value="1.0" />-->
     <!--<set_variable value="1.0" />-->
+    <!--<set_timer value="0.0" seconds="10" name="tmrNextCommTraffic" />-->
   </event>
   <folder_arme name_arme="Create Universe" id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
   <folder_arme name_arme="Locations" id_arme="92e4353f-2889-4b4d-b782-ff755db9e347" parent_id_arme="3617931b-2d34-432a-9b8d-cb727c2ae9ff" expanded_arme="" />
@@ -48,10 +49,6 @@
     <!--/Energy Reading 01-->
     <!--TSN Feynman-->
     <create type="neutral" x="84855.0" y="0.0" z="86224.0" angle="0" name="TSN Feynman" hullID="1502" sideValue="2" />
-    <set_object_property property="topSpeed" value="20.0" name="TSN Feynman" />
-    <clear_ai name="TSN Feynman" />
-    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Feynman" />
-    <add_ai type="TARGET_THROTTLE" targetName="Energy Reading 01" value1="1.0" name="TSN Feynman" />
     <!--/TSN Feynman-->
     <!--Kralien scouts-->
     <create type="enemy" x="14399.0" y="0.0" z="10912.0" angle="270" name="KS01" raceKeys="Kralien" hullKeys="small Scout" sideValue="1" fleetnumber="1" />
@@ -59,14 +56,18 @@
     <!--/Kralien scouts-->
     <set_variable name="isObjectsCreatedChapter0" value="1.0" />
   </event>
-  <event name_arme="AI Stack for New Objects" id_arme="808d9bad-439d-486c-ad94-ed59408ff75b" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1">
+  <event name_arme="Object Properties + AI" id_arme="808d9bad-439d-486c-ad94-ed59408ff75b" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1">
+    <if_exists name="Energy Reading 01" />
     <if_exists name="TSN Feynman" />
+    <if_exists name="KS01" />
+    <if_exists name="KS02" />
     <!--TSN Feynman-->
-    <set_object_property property="topSpeed" value="20.0" name="TSN Feynman" />
     <clear_ai name="TSN Feynman" />
-    <add_ai type="TARGET_THROTTLE" targetName="Energy Reading 01" value1="1.0" name="TSN Feynman" />
+    <add_ai type="CHASE_WHALE" value1="20000" name="TSN Feynman" />
     <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Feynman" />
     <!--/TSN Feynman-->
+    <!--Kralien scouts-->
+    <!--/Kralien scouts-->
   </event>
   <folder_arme name_arme="Comm Traffic" id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
   <event name_arme="TSN Command: Mission Orders" id_arme="bcc2738a-8957-4d3a-8ece-4552e823cc85" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
@@ -75,11 +76,14 @@
     <!--Mission orders: Proceed to Verpunt. Preserve DS9.-->
     <incoming_comms_text from="TSN Command">Greetings, Enterprise. Your orders are to rendez-vous with^Ambassador Troy at Verpunt Station. Also, keep an eye out ^for Kralien incursions in this sector.</incoming_comms_text>
     <set_variable name="commTrafficChapter0" value="1.0" />
+    <set_timer name="tmrNextCommTraffic" seconds="10" />
   </event>
   <event name_arme="TSN Feynman: Capt. Lanthos sends her regards" id_arme="a7ae7ba4-b744-4e0f-817f-0cc85c02084f" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_variable name="commTrafficChapter0" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="tmrNextCommTraffic" />
     <incoming_comms_text from="TSN Feynman">Greetings, Enterprise. Captain Lanthos sends her regards.^We'll be conducting scientific surveys in the area. We ^haven't seen any Kraliens yet, but we'll keep you posted.^Feynman out.</incoming_comms_text>
     <set_variable name="commTrafficChapter0" value="2.0" />
+    <set_timer name="tmrNextCommTraffic" seconds="10" />
   </event>
   <folder_arme name_arme="Chapter 1 - Arrival at Verpunt" id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
   <folder_arme name_arme="Create Objects" id_arme="7d90bdf8-f851-454c-9516-1211d5de1060" parent_id_arme="679ce8f8-c8cf-4a5c-97ca-92b46acc5a7d" expanded_arme="" />
@@ -110,4 +114,10 @@
   <folder_arme name_arme="Chapter 7 - Kraliens Gone" id_arme="647b8b0e-1d66-4179-85c5-245ae0d33bd5" expanded_arme="" />
   <folder_arme name_arme="Create Objects" id_arme="efa5bcbf-8727-47b4-ac76-7ce2c319c6a7" parent_id_arme="647b8b0e-1d66-4179-85c5-245ae0d33bd5" expanded_arme="" />
   <folder_arme name_arme="Comm Traffic" id_arme="ba37e51d-94a3-43d7-8cd5-273e8c6c886e" parent_id_arme="647b8b0e-1d66-4179-85c5-245ae0d33bd5" />
+  <folder_arme name_arme="General Condition Triggers" id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160" expanded_arme="" />
+  <event name_arme="Event 2" id_arme="c3c3c4c2-357f-4ecf-911d-3f538db5159a" parent_id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160">
+    <if_outside_sphere name="KS01" centerX="20284" centerY="0" centerZ="19337" radius="20000" />
+    <add_ai type="POINT_THROTTLE" value1="20284.0" value2="0.0" value3="19337.0" value4="0.5" name="KS01" />
+    <add_ai type="POINT_THROTTLE" value1="20284.0" value2="0.0" value3="19337.0" value4="0.5" name="KS02" />
+  </event>
 </mission_data>
