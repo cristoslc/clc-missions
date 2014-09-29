@@ -32,8 +32,8 @@
   <event name_arme="Create Terrain" id_arme="4d4fad44-dd9b-4e6f-b135-57dfbb4c1ccc" parent_id_arme="ef6178b2-666b-42e5-95f7-ac3f6a68e64d">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isTerrainCreated" comparator="EQUALS" value="0.0" />
-    <create count="200" type="asteroids" startAngle="270" endAngle="360" startX="0.0" startY="0.0" startZ="100000.0" radius="50000" randomRange="1000" randomSeed="2" />
-    <create count="300" type="nebulas" startX="24482.0" startY="0.0" startZ="22240.0" radius="15000" randomRange="15000" />
+    <create count="200" type="asteroids" startAngle="270" endAngle="360" startX="0.0" startY="0.1" startZ="100000.0" radius="50000" randomRange="2000" randomSeed="2" />
+    <create count="500" type="nebulas" startX="24482.0" startY="0.0" startZ="22240.0" radius="15000" randomRange="15000" randomSeed="3" />
     <create count="300" type="nebulas" startX="70789.0" startY="0.0" startZ="79128.0" radius="7961" randomRange="25000" randomSeed="10" />
     <set_variable name="isTerrainCreated" value="1.0" />
     <log text="Terrain Created" />
@@ -42,21 +42,31 @@
   <event name_arme="Create Objects" id_arme="97f00210-0ecc-455d-8a9a-48f7737d37b7" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1">
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isObjectsCreatedChapter0" comparator="EQUALS" value="0.0" />
+    <!--Energy Reading 01-->
+    <create type="whale" x="73527.0" y="0.0" z="76887.0" angle="0.0" name="Energy Reading 01" podnumber="0" />
+    <clear_ai name="Energy Reading 01" />
+    <!--/Energy Reading 01-->
     <!--TSN Feynman-->
     <create type="neutral" x="84855.0" y="0.0" z="86224.0" angle="0" name="TSN Feynman" hullID="1502" sideValue="2" />
-    <set_object_property property="topSpeed" value="10.0" name="TSN Feynman" />
-    <create type="whale" x="73527.0" y="0.0" z="76887.0" angle="0.0" name="Energy Reading 01" podnumber="0" />
+    <set_object_property property="topSpeed" value="20.0" name="TSN Feynman" />
     <clear_ai name="TSN Feynman" />
     <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Feynman" />
-    <add_ai type="TARGET_THROTTLE" targetName="Energy Reading 01" value1="0.5" name="TSN Feynman" />
+    <add_ai type="TARGET_THROTTLE" targetName="Energy Reading 01" value1="1.0" name="TSN Feynman" />
     <!--/TSN Feynman-->
     <!--Kralien scouts-->
-    <create type="enemy" x="14399.0" y="0.0" z="10912.0" angle="270" name="KS01" raceKeys="Kralien" hullKeys="small Scout" sideValue="2" fleetnumber="-1" />
-    <create type="enemy" x="14399.0" y="0.0" z="10912.0" angle="270" name="KS02" raceKeys="Kralien" hullKeys="small Scout" sideValue="2" fleetnumber="-1" />
-    <clear_ai name="KS01" />
-    <clear_ai name="KS02" />
+    <create type="enemy" x="14399.0" y="0.0" z="10912.0" angle="270" name="KS01" raceKeys="Kralien" hullKeys="small Scout" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="14399.0" y="0.0" z="10912.0" angle="270" name="KS02" raceKeys="Kralien" hullKeys="small Scout" sideValue="1" fleetnumber="1" />
     <!--/Kralien scouts-->
     <set_variable name="isObjectsCreatedChapter0" value="1.0" />
+  </event>
+  <event name_arme="AI Stack for New Objects" id_arme="808d9bad-439d-486c-ad94-ed59408ff75b" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1">
+    <if_exists name="TSN Feynman" />
+    <!--TSN Feynman-->
+    <set_object_property property="topSpeed" value="20.0" name="TSN Feynman" />
+    <clear_ai name="TSN Feynman" />
+    <add_ai type="TARGET_THROTTLE" targetName="Energy Reading 01" value1="1.0" name="TSN Feynman" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Feynman" />
+    <!--/TSN Feynman-->
   </event>
   <folder_arme name_arme="Comm Traffic" id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0" parent_id_arme="acee7c7b-ddab-408c-b476-de38c3c33ca1" expanded_arme="" />
   <event name_arme="TSN Command: Mission Orders" id_arme="bcc2738a-8957-4d3a-8ece-4552e823cc85" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
