@@ -1,8 +1,8 @@
 <mission_data version="1.0" background_id_arme="3b225fb6-cd60-434a-9824-24a4555d47af" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
   <start name_arme="Start">
-    <create type="player" x="10000.0" y="0" z="87000.0" name="Enterprise-D" />
+    <create type="player" x="86889.0" y="0.0" z="30645.0" angle="0" name="Enterprise-D" />
     <set_skybox_index index="9" />
-    <big_message title="Mission to VerPunt Station" subtitle1="by Cristos L-C (cristos@cristoslc.com)" subtitle2="based on FarPoint Station by Travis Head" />
+    <big_message title="Mission to Verpunt Station" subtitle1="by Cristos L-C (cristos@cristoslc.com)" subtitle2="based on FarPoint Station by Travis Head" />
     <set_timer name="tmrMissionStart" seconds="10" />
     <set_variable name="chapter" value="0.0" />
     <set_variable name="damConAlpha" value="6.0" />
@@ -87,32 +87,35 @@
   <event name_arme="NOTIFICATION: Incoming orders" id_arme="be2c927c-ef42-4722-9f66-bc8f015ce387" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_variable name="commTrafficChapter0" comparator="EQUALS" value="0.0" />
     <if_timer_finished name="tmrMissionStart" />
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <!--Mission orders: Proceed to Verpunt. Preserve DS9.-->
-    <!--<warning_popup_message message="Incoming message: ATTENTION TO ORDERS" consoles="MC">Incoming message: ATTENTION TO ORDERS</warning_popup_message>-->
+    <warning_popup_message message="Incoming message: ATTENTION TO ORDERS" consoles="MC">Incoming message: ATTENTION TO ORDERS</warning_popup_message>
     <set_timer name="tmrNextCommTraffic" seconds="5" />
     <set_variable name="commTrafficChapter0" value="1.0" />
   </event>
   <event name_arme="TSN Command: Mission Orders" id_arme="a5b804d9-b796-49c0-bcd7-8a3bc85d2eaf" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_variable name="commTrafficChapter0" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <!--Mission orders: Proceed to Verpunt. Preserve DS9.-->
     <incoming_comms_text from="TSN Command">Enterprise, your primary mission is to provide assistance as needed for the diplomatic envoy currently on Verpunt Station. You are also on detached duty to provide protection for all TSN stations and ships in this sector.^Remember that our key strategic objective is to secure an alliance with the Denubian people. Our fleet is already stretched thin, and we need more allies in this region of space.</incoming_comms_text>
     <incoming_comms_text from="TSN Command">We're counting on you and your crew, Captain. TSN Command out.</incoming_comms_text>
     <set_variable name="commTrafficChapter0" value="2.0" />
     <set_timer name="tmrNextCommTraffic" seconds="30" />
   </event>
-  <event name_arme="TSN Feynman: Capt. Lanthos sends her regards" id_arme="98ba0a58-9c42-473d-83a0-211dc112c667" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
+  <event name_arme="TSN Feynman: Capt. Lanthos sends her regards" id_arme="55aa6a24-8059-484b-98f6-d11f85cc4f07" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_variable name="commTrafficChapter0" comparator="EQUALS" value="2.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
-    <incoming_comms_text from="TSN Feynman">Feynman out.</incoming_comms_text>
-    <incoming_comms_text from="TSN Feynman">We're investigating an unusual radiation source in this nebula. We haven't seen any Kraliens yet, but we'll keep you posted.</incoming_comms_text>
-    <incoming_comms_text from="TSN Feynman">Greetings, Enterprise. This is Lieutenant Lefler of the TSN Feynman. Captain Lanthos sends her regards.</incoming_comms_text>
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="TSN Feynman">Greetings, Enterprise. This is Lieutenant Lefler of the TSN Feynman. Captain Lanthos sends her compliments.</incoming_comms_text>
+    <incoming_comms_text from="TSN Feynman">We're investigating an unusual radiation source in this nebula. We haven't seen any Kraliens yet, but we'll keep you posted. Feynman out.</incoming_comms_text>
     <set_variable name="commTrafficChapter0" value="3.0" />
     <set_timer name="tmrNextCommTraffic" seconds="15" />
   </event>
   <event name_arme="Verpunt Station: Ambassador Troy is ready" id_arme="a7ae7ba4-b744-4e0f-817f-0cc85c02084f" parent_id_arme="78ee9d57-c485-4534-9746-0d37c0de90c0">
     <if_variable name="commTrafficChapter0" comparator="EQUALS" value="3.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
+    <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="Ambassador Troy (Verpunt Station)">Ambassador Troy to Enterprise. The mission on Verpunt is complete, and I am ready to return to DS9.</incoming_comms_text>
     <set_ship_text name="Verpunt Station" desc="ORDERS: Pick up Ambassador Troy at this location, and transport her to DS9." />
     <set_variable name="commTrafficChapter0" value="4.0" />
@@ -191,6 +194,7 @@
   </event>
   <event name_arme="Verpunt Station: Contacts approaching A3" id_arme="be7e1db5-66a6-4836-83ea-9c1398082c77" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
     <if_variable name="commTrafficChapter1" comparator="EQUALS" value="3.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="Verpunt Station Traffic Control">Enterprise, be advised: we are reading multiple unknown contacts bearing 200 near grid A3.</incoming_comms_text>
     <set_timer name="tmrNextCommTraffic" seconds="5" />
     <set_variable name="commTrafficChapter1" value="4.0" />
@@ -199,16 +203,10 @@
   <event name_arme="Ambassador Troy: Stay on mission" id_arme="e5cc4be0-c4cf-49e0-a94a-2c8787437f77" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
     <if_variable name="commTrafficChapter1" comparator="EQUALS" value="4.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
-    <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Captain, your priority is still to deliver me and these treaty documents to DS9. Don't even think about chasing sensor ghosts right now. And-- oh, Captain, that was not a nice thought about telepaths. You were doing so well, too.^-- end transmission --</incoming_comms_text>
-    <set_timer name="tmrCommNag" seconds="30" />
-    <set_variable name="commTrafficChapter1" value="5.0" />
-  </event>
-  <event name_arme="REMINDER - Ambassador Troy: Return to DS9" id_arme="88d5ca20-8b67-4847-8263-fe8338643d7f" parent_id_arme="1c18f3c8-dd9f-41b9-bf1d-5d55076f3669">
     <if_variable name="chapter" comparator="EQUALS" value="1.0" />
-    <if_variable name="commTrafficChapter1" comparator="EQUALS" value="5.0" />
-    <if_timer_finished name="tmrCommNag" />
-    <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Captain, your priority is still to deliver me and these treaty documents to DS9. Get a move on!</incoming_comms_text>
-    <set_timer name="tmrNextCommTraffic" seconds="60" />
+    <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Captain, your priority is still to deliver me and these treaty documents to DS9. Don't even think about chasing sensor ghosts right now. And-- oh, Captain, that was not a nice thought about telepaths. You were doing so well, too.^-- end transmission --</incoming_comms_text>
+    <set_timer name="tmrNextCommTraffic" seconds="30" />
+    <set_variable name="commTrafficChapter1" value="5.0" />
   </event>
   <folder_arme name_arme="Chapter 2 - Kralien Fleet Appears" id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" expanded_arme="" />
   <folder_arme name_arme="Trigger Chapter Events" id_arme="cee97d40-f070-4958-84af-a6610e2fc2ee" parent_id_arme="ccb04359-94b1-47ce-bca4-6d43dac3a87b" expanded_arme="" />
@@ -233,16 +231,18 @@
     <set_variable name="ch2CreateKralienFleet" value="2.0" />
     <create type="enemy" x="50872.0" y="0.0" z="68.0" angle="200" name="KS03" raceKeys="Kralien" hullKeys="small" sideValue="1" fleetnumber="1" />
     <create type="enemy" x="50872.0" y="0.0" z="560.0" angle="205" name="KS04" raceKeys="Kralien" hullKeys="small warship" sideValue="1" fleetnumber="1" />
+    <set_object_property property="positionX" value="50800.0" name="KS01" />
+    <set_object_property property="positionX" value="50800.0" name="KS02" />
   </event>
   <event name_arme="Set Properties/Behaviors" id_arme="1025ccfa-4213-4ec2-87d6-623b2c3c71f5" parent_id_arme="0188964a-58dd-4e88-b827-ef4a67ce8fdc">
     <if_variable name="ch2CreateKralienFleet" comparator="EQUALS" value="2.0" />
     <!--Kralien Fleet 01-->
-    <set_fleet_property property="fleetSpacing" value="500.0" fleetIndex="1" />
+    <set_fleet_property property="fleetSpacing" value="150.0" fleetIndex="1" />
     <set_fleet_property property="fleetMaxRadius" value="5000.0" fleetIndex="1" />
+    <add_ai type="LEADER_LEADS" name="KS01" />
+    <add_ai type="LEADER_LEADS" name="KS02" />
+    <add_ai type="LEADER_LEADS" name="KS04" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="KS03" />
-    <add_ai type="FOLLOW_LEADER" name="KS01" />
-    <add_ai type="FOLLOW_LEADER" name="KS02" />
-    <add_ai type="FOLLOW_LEADER" name="KS04" />
     <add_ai type="ATTACK" targetName="Verpunt Station" value1="1.0" name="KS03" />
     <set_variable name="isKeepScoutsInNebula" value="0.0" />
     <!--/Kralien Fleet 01-->
@@ -258,42 +258,33 @@
     <set_timer name="tmrNextCommTraffic" seconds="5" />
   </event>
   <event name_arme="REMINDER - Ambassador Troy: Protect Verpunt" id_arme="b65e04c4-55d3-4289-ac28-fe9db2cbb475" parent_id_arme="b422148b-2752-4569-b2d3-95cb57b2fb67">
-    <if_distance name1="Enterprise-D" name2="KS03" comparator="GREATER" value="10000.0" />
-    <if_exists name="KS03" />
     <if_timer_finished name="tmrCommNag" />
     <if_variable name="chapter" comparator="EQUALS" value="2.0" />
-    <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Captain, Verpunt Station is critical to the TSN's strategic defense of this sector. We must save them from the Kraliens.</incoming_comms_text>
-    <set_variable name="commTrafficChapter2" value="2.0" />
+    <if_object_property property="shieldState" name="Verpunt Station" comparator="LESS" value="300.0" />
+    <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Captain, Verpunt Station is critical to the TSN's strategic defense of this sector. We must save them from this attack.</incoming_comms_text>
     <set_timer name="tmrCommNag" seconds="60" />
   </event>
   <folder_arme name_arme="Chapter 3 - After Envoy returned to DS9" id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
   <folder_arme name_arme="Trigger Chapter Events" id_arme="0c819777-c203-43ff-802e-6924f54d4714" parent_id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
   <event name_arme="Enterprise docks at DS9" id_arme="9484c1fe-2087-4c4e-9936-efd63ccf86b8" parent_id_arme="0c819777-c203-43ff-802e-6924f54d4714">
     <if_docked name="Deep Space 9" />
-    <if_variable name="chapter" comparator="LESS" value="3.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="2.0" />
     <set_variable name="ch3UnknownEntityCreated" value="1.0" />
-    <set_variable name="commTrafficChapter3" value="0.0" />
     <set_variable name="chapter" value="3.0" />
   </event>
   <folder_arme name_arme="Create Objects" id_arme="28ee6abb-a1c4-4976-955a-df1b1aab654e" parent_id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
   <event name_arme="Create Objects" id_arme="ef2a6539-c519-4c18-b16e-2099a60120b5" parent_id_arme="28ee6abb-a1c4-4976-955a-df1b1aab654e">
     <if_variable name="ch3UnknownEntityCreated" comparator="EQUALS" value="1.0" />
-    <create type="enemy" x="100000.0" y="0.0" z="85.0" angle="160" name="Unknown Entity 01" hullID="6003" sideValue="0" fleetnumber="-1" />
+    <set_variable name="ch3UnknownEntityCreated" value="2.0" />
+    <create type="enemy" x="95541.0" y="0.0" z="59222.0" angle="60" name="Unknown Entity 01" raceKeys="biomech" hullKeys="Type 4" sideValue="3" fleetnumber="99" />
   </event>
   <event name_arme="Set Properties/Behaviors" id_arme="8a6b81fb-5071-4f2e-87cc-2df17542c158" parent_id_arme="28ee6abb-a1c4-4976-955a-df1b1aab654e">
     <if_variable name="ch3UnknownEntityCreated" comparator="EQUALS" value="2.0" />
     <clear_ai name="Unknown Entity 01" />
-    <add_ai type="ATTACK" targetName="Verpunt Station" value1="0.5" name="Unknown Entity 01" />
+    <add_ai type="ATTACK" targetName="Verpunt Station" value1="1.0" name="Unknown Entity 01" />
     <set_variable name="ch3UnknownEntityCreated" value="3.0" />
   </event>
   <folder_arme name_arme="Comm Traffic" id_arme="3cf65b5c-df1b-413a-8050-54c006f30a44" parent_id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
-  <event name_arme="Ambassador Troy: Ready to return to DS9" id_arme="2f8de8d6-ae34-47d9-a995-5ea361afefb1" parent_id_arme="3cf65b5c-df1b-413a-8050-54c006f30a44">
-    <if_variable name="commTrafficChapter1" comparator="EQUALS" value="2.0" />
-    <if_variable name="chapter" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Ambassador Troy to bridge. Captain, thank you for assigning Lieutenant Chel as our guide. I'm aware that some officers of the TSN are...uneasy around telepaths. It's nice to know that your crew are not among them.</incoming_comms_text>
-    <set_timer name="tmrNextCommTraffic" seconds="15" />
-    <set_variable name="commTrafficChapter1" value="3.0" />
-  </event>
   <folder_arme name_arme="Chapter 4 - Rescue Verpunt Station from Entity" id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" expanded_arme="" />
   <folder_arme name_arme="Create Objects" id_arme="80de8a77-c730-4f23-9f0f-3d335551644e" parent_id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" expanded_arme="" />
   <folder_arme name_arme="Comm Traffic" id_arme="7b057e9d-4928-4697-8663-a4c886e75464" parent_id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" />
