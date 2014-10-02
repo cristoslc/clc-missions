@@ -24,7 +24,7 @@
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isLocationsCreated" comparator="EQUALS" value="0.0" />
     <create type="station" x="10000.0" y="0.0" z="90000.0" angle="0" name="Deep Space 9" hullID="1000" />
-    <create type="station" x="88216.0" y="0.0" z="30580.0" angle="0" name="Verpunt Station" hullID="1002" sideValue="2" />
+    <create type="station" x="88216.0" y="0.0" z="30580.0" angle="0" name="Verpunt Station" hullID="1004" sideValue="2" />
     <set_variable name="isLocationsCreated" value="1.0" />
     <log text="Locations Created" />
   </event>
@@ -41,6 +41,7 @@
     <if_variable name="chapter" comparator="EQUALS" value="0.0" />
     <if_variable name="isLocationsCreated" comparator="EQUALS" value="0.0" />
     <!--Verpunt Station-->
+    <set_object_property property="systemDamageTactical" value="100.0" name="Verpunt Station" />
     <set_object_property property="missileStoresHoming" value="0" name="Verpunt Station" />
     <set_object_property property="missileStoresNuke" value="0" name="Verpunt Station" />
     <set_object_property property="missileStoresMine" value="0" name="Verpunt Station" />
@@ -265,7 +266,7 @@
     <incoming_comms_text from="Ambassador Troy (Guest Quarters 11C)">Captain, Verpunt Station is critical to the TSN's strategic defense of this sector. We must save them from this attack.</incoming_comms_text>
     <set_timer name="tmrCommNag" seconds="60" />
   </event>
-  <folder_arme name_arme="Chapter 3 - After Envoy returned to DS9" id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" />
+  <folder_arme name_arme="Chapter 3 - After Envoy returned to DS9" id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
   <folder_arme name_arme="Trigger Chapter Events" id_arme="0c819777-c203-43ff-802e-6924f54d4714" parent_id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
   <event name_arme="Enterprise docks at DS9" id_arme="9484c1fe-2087-4c4e-9936-efd63ccf86b8" parent_id_arme="0c819777-c203-43ff-802e-6924f54d4714">
     <if_docked name="Deep Space 9" />
@@ -288,13 +289,6 @@
     <set_variable name="ch3UnknownEntityCreated" value="3.0" />
   </event>
   <folder_arme name_arme="Comm Traffic" id_arme="3cf65b5c-df1b-413a-8050-54c006f30a44" parent_id_arme="973d5044-80b8-4d63-a225-6a8335ba7dd6" expanded_arme="" />
-  <event name_arme="Verpunt Station: Defend us!" id_arme="04a5d34e-5d81-451b-9237-c0346faf5ab3" parent_id_arme="3cf65b5c-df1b-413a-8050-54c006f30a44">
-    <if_variable name="commTrafficChapter3" comparator="EQUALS" value="0.0" />
-    <if_variable name="chapter" comparator="EQUALS" value="3.0" />
-    <incoming_comms_text from="Cropper Zorm (Verpunt Station)">Captain, please save us -- you must chase that creature away!</incoming_comms_text>
-    <set_variable name="commTrafficChapter3" value="1.0" />
-    <set_timer name="tmrNextCommTraffic" seconds="15" />
-  </event>
   <folder_arme name_arme="Chapter 4 - Rescue Verpunt Station from Entity" id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" expanded_arme="" />
   <folder_arme name_arme="Trigger Chapter Events" id_arme="a439464e-9902-44a6-98d9-31cc54f1ffbf" parent_id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" expanded_arme="" />
   <event name_arme="Enterprise approaches Verpunt Station" id_arme="abfd1d33-31f9-4926-aaff-e00b8c74390e" parent_id_arme="a439464e-9902-44a6-98d9-31cc54f1ffbf">
@@ -319,6 +313,13 @@
   <folder_arme name_arme="Create Objects" id_arme="80de8a77-c730-4f23-9f0f-3d335551644e" parent_id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" expanded_arme="" />
   <event name_arme="Set Properties/Behaviors" id_arme="d489241a-2ef3-40c5-9a01-3cebaafdb668" parent_id_arme="80de8a77-c730-4f23-9f0f-3d335551644e" />
   <folder_arme name_arme="Comm Traffic" id_arme="7b057e9d-4928-4697-8663-a4c886e75464" parent_id_arme="3fa797be-4cf9-4133-bcd2-2b4a0ad30d36" expanded_arme="" />
+  <event name_arme="Verpunt Station: Defend us!" id_arme="04a5d34e-5d81-451b-9237-c0346faf5ab3" parent_id_arme="7b057e9d-4928-4697-8663-a4c886e75464">
+    <if_variable name="commTrafficChapter4" comparator="EQUALS" value="0.0" />
+    <if_variable name="chapter" comparator="EQUALS" value="4.0" />
+    <incoming_comms_text from="Cropper Zorm (Verpunt Station)">Captain, please save us -- you must chase that creature away!</incoming_comms_text>
+    <set_variable name="commTrafficChapter3" value="1.0" />
+    <set_timer name="tmrNextCommTraffic" seconds="15" />
+  </event>
   <event name_arme="TSN Feynman: weird readings" id_arme="7f2eaa71-6390-4fa5-9ebd-d68cbf58bcaa" parent_id_arme="7b057e9d-4928-4697-8663-a4c886e75464">
     <if_variable name="commTrafficChapter4" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="tmrNextCommTraffic" />
@@ -327,7 +328,7 @@
     <set_variable name="commTrafficChapter4" value="1.0" />
     <set_timer name="tmrNextCommTraffic" seconds="5" />
   </event>
-  <folder_arme name_arme="Chapter 5 - Trapped Creature is Freed" id_arme="21643867-5f8b-4f39-b4fd-09712a8e7afd" expanded_arme="" />
+  <folder_arme name_arme="Chapter 5 - Trapped Creature is Freed" id_arme="21643867-5f8b-4f39-b4fd-09712a8e7afd" />
   <folder_arme name_arme="Trigger Chapter Events" id_arme="9945c090-5013-4418-81bb-aa9ca7ba5bc9" parent_id_arme="21643867-5f8b-4f39-b4fd-09712a8e7afd" expanded_arme="" />
   <event name_arme="Verpunt Station Destroyed" id_arme="ce424136-e50f-474e-9fcf-616754d43f83" parent_id_arme="9945c090-5013-4418-81bb-aa9ca7ba5bc9">
     <if_variable name="chapter" comparator="EQUALS" value="4.0" />
@@ -394,6 +395,16 @@
     <if_variable name="isKeepScoutsInNebula" comparator="EQUALS" value="1.0" />
     <add_ai type="POINT_THROTTLE" value1="20284.0" value2="0.0" value3="19337.0" value4="0.5" name="KS01" />
     <add_ai type="POINT_THROTTLE" value1="20284.0" value2="0.0" value3="19337.0" value4="0.5" name="KS02" />
+  </event>
+  <folder_arme name_arme="Cripple Verpunt" id_arme="ed0085ed-2865-4dfa-ad3a-646fed6eba88" parent_id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160" expanded_arme="" />
+  <event name_arme="Event 3" id_arme="6b83e108-068e-4b7f-b348-9aac8b65f3cf" parent_id_arme="ed0085ed-2865-4dfa-ad3a-646fed6eba88">
+    <if_object_property property="systemDamageTactical" name="Verpunt Station" comparator="GREATER" value="0.0" />
+    <set_object_property property="systemDamageTactical" value="100.0" name="Verpunt Station" />
+    <set_object_property property="missileStoresHoming" value="0" name="Verpunt Station" />
+    <set_object_property property="missileStoresNuke" value="0" name="Verpunt Station" />
+    <set_object_property property="missileStoresMine" value="0" name="Verpunt Station" />
+    <set_object_property property="missileStoresECM" value="0" name="Verpunt Station" />
+    <set_object_property property="canBuild" value="0" name="Verpunt Station" />
   </event>
   <folder_arme name_arme="Creature Wrangling" id_arme="749d2ba1-59de-4eb4-89d8-85a21e036f40" parent_id_arme="d9246b4a-b44e-4aea-8581-634cb95c9160" expanded_arme="" />
   <event name_arme="Prevent UnknownEntity1 from leaving Verpunt" id_arme="004ff0d2-43af-4f23-8152-a5e90c67aa33" parent_id_arme="749d2ba1-59de-4eb4-89d8-85a21e036f40">
